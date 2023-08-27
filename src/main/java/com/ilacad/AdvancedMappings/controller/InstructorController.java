@@ -21,7 +21,7 @@ public class InstructorController {
 
     @PostMapping("/save-instructor")
     public String saveInstructor(@Valid @ModelAttribute(name = "instructor") InstructorDto instructorDto, BindingResult result, Model model) {
-        
+
         // Display an error message if user provides an empty or null value/s.
         if (result.hasErrors()) {
             model.addAttribute("instructor", instructorDto);
