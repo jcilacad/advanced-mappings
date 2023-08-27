@@ -1,7 +1,9 @@
 package com.ilacad.AdvancedMappings.controller;
 
 import com.ilacad.AdvancedMappings.dto.InstructorDto;
+import com.ilacad.AdvancedMappings.service.InstructorService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,6 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class InstructorController {
+
+    InstructorService instructorService;
+
+    @Autowired
+    public InstructorController(InstructorService instructorService) {
+        this.instructorService = instructorService;
+    }
 
     @GetMapping("/")
     public String dashboard (Model model) {
@@ -27,6 +36,8 @@ public class InstructorController {
             model.addAttribute("instructor", instructorDto);
             return "home";
         }
+
+        instructorService.saveInstructor(instructorDto);
 
         return "redirect:/?success";
     }
