@@ -47,35 +47,35 @@
 <div class="container mt-5">
     <div class="row d-flex justify-content-center align-items-center">
         <div class="col-md-8">
-            <form id="regForm">
+            <form id="regForm" th:object="${instructor}" th:action="@{/save-instructor}" method="POST">
                 <h1 id="register">Instructor Form</h1>
 
 
                 <div class="tab mt-5">
                     <p>
-                        <input placeholder="First Name"></p>
+                        <input th:field="*{firstName}" placeholder="First Name"></p>
 
                 </div>
 
                 <div class="tab">
-                    <p><input placeholder="Last Name"></p>
+                    <p><input th:field="*{lastName}" placeholder="Last Name"></p>
 
                 </div>
                 <div class="tab">
-                    <p><input placeholder="Email"></p>
+                    <p><input th:field="*{email}" placeholder="Email"></p>
 
                 </div>
                 <div class="tab">
-                    <p><input placeholder="Youtube Channel"></p>
+                    <p><input th:field="*{youtubeChannel}" placeholder="Youtube Channel"></p>
                 </div>
 
                 <div class="tab">
-                    <p><input placeholder="Hobby"></p>
+                    <p><input th:field="*{hobby}"placeholder="Hobby"></p>
                 </div>
 
 
                 <div class="d-grid gap-2 mt-4">
-                    <button class="btn btn-primary" type="button">Submit</button>
+                    <button class="btn btn-primary" type="submit">Submit</button>
                 </div>
 
             </form>
