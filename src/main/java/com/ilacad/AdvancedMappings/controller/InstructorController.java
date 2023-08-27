@@ -20,7 +20,7 @@ public class InstructorController {
 
     @PostMapping("/save-instructor")
     public String saveInstructor(@Valid @ModelAttribute(name = "instructor") InstructorDto instructorDto) {
-        
+
         return "redirect:/?success";
     }
 
