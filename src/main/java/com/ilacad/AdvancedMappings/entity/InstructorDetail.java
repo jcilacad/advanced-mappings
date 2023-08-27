@@ -9,8 +9,8 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "instructor_details")
-public class InstructorDetails {
+@Table(name = "instructor_detail")
+public class InstructorDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,7 @@ public class InstructorDetails {
     @Column(name = "hobby")
     private String hobby;
 
-    public InstructorDetails(String youtubeChannel, String hobby) {
+    public InstructorDetail(String youtubeChannel, String hobby) {
         this.youtubeChannel = youtubeChannel;
         this.hobby = hobby;
     }
