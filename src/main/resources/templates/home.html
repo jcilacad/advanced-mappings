@@ -11,22 +11,20 @@
           integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
 </head>
-<body>
-
-<nav class="navbar navbar-expand-md bg-body-tertiary px-3">
+<body style="background: #eee">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Instructor</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" th:href="@{/instructor}">Instructor</a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="navbar-collapse collapse" id="navbarNav" style="">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" th:href="@{/instructor}">Home</a>
+                    <a class="nav-link active" aria-current="page" th:href="@{/instructor}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" th:href="@{/instructor/form}">Form</a>
+                    <a class="nav-link" th:href="@{/instructor/form}">Form</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/instructor/list}">List</a>
