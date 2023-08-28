@@ -2,16 +2,14 @@ package com.ilacad.AdvancedMappings.controller;
 
 import com.ilacad.AdvancedMappings.dto.EmailDto;
 import com.ilacad.AdvancedMappings.dto.InstructorDto;
+import com.ilacad.AdvancedMappings.entity.Instructor;
 import com.ilacad.AdvancedMappings.service.InstructorService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -87,6 +85,15 @@ public class InstructorController {
         }
 
         return "redirect:/instructor/list?undefined";
+    }
+
+
+    @GetMapping("/instructor-details")
+    public String instructorDetails (@RequestParam("id") Long id, Model model) {
+
+        Instructor instructorDetails = instructorService.findInstructorById(id);
+        model.addAttribute("instructor", instructorDetails);
+        return "instructor-details";
     }
 
 

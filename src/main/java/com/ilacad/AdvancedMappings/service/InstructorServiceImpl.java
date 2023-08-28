@@ -74,4 +74,9 @@ public class InstructorServiceImpl implements InstructorService{
         }
         return id;
     }
+
+    @Override
+    public Instructor findInstructorById(Long id) {
+        return instructorRepository.getReferenceById(id);
+    }
 }
