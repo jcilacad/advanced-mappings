@@ -49,11 +49,12 @@
                         <div class="col-md-12">
                             <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger"
                                  role="alert">
-                                A simple danger alert—check it out!
+<!--                                Produce an error message based on validation-->
                             </div>
+
                             <div th:if="${param.undefined}" class="alert alert-danger"
                                  role="alert">
-                                The instructor didn't exists
+                                Email does not exists
                             </div>
 
                             <h2 class="pt-3 pb-4 text-center font-bold font-up deep-purple-text">List of
