@@ -64,7 +64,7 @@ public class InstructorController {
 
         List<InstructorDto> instructorList = instructorService.getAllInstructors();
 
-        model.addAttribute("instructor", new EmailDto());
+        model.addAttribute("email", new EmailDto());
         model.addAttribute("instructorList", instructorList);
         return "instructor-list";
     }

@@ -43,7 +43,7 @@
         <div class="card mb-4">
             <div class="card-body">
                 <!-- Grid row -->
-                <form th:action="@{/instructor/search-instructor}" th:object="${instructor}" method="POST">
+                <form th:action="@{/instructor/search-instructor}" th:object="${email}" method="POST">
                     <div class="row">
                         <!-- Grid column -->
                         <div class="col-md-12">
@@ -51,7 +51,7 @@
                                 Instructors</h2>
                             <div class="input-group mb-3">
 
-                                <input type="text" th:field="*{instructor.email}" class="form-control" placeholder="Instructor's Email Address"
+                                <input th:field="*{email}" type="text" class="form-control" placeholder="Instructor's Email Address"
                                        aria-label="Recipient's username" aria-describedby="button-addon2">
                                 <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Button
                                 </button>
