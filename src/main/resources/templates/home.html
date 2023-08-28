@@ -1,96 +1,10 @@
-<!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home Page</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-
-    <style>
-        body {
-            background: #eee
-        }
-
-        #regForm {
-            background-color: #ffffff;
-            margin: 0px auto;
-            font-family: Raleway;
-            padding: 40px;
-            border-radius: 10px
-        }
-
-        #register {
-            color: #6A1B9A;
-        }
-
-        h1 {
-            text-align: center
-        }
-
-        input {
-            padding: 10px;
-            width: 100%;
-            font-size: 17px;
-            font-family: Raleway;
-            border: 1px solid #aaaaaa;
-            border-radius: 10px;
-            -webkit-appearance: none;
-        }
-
-    </style>
+    <title>Home</title>
 </head>
 <body>
-
-<div class="container mt-5">
-    <div class="row d-flex justify-content-center align-items-center">
-        <div class="col-md-8">
-
-            <div th:if="${param.success}" class="alert alert-success" role="alert">
-                Successfully saved an instructor
-            </div>
-
-            <form id="regForm" th:object="${instructor}" th:action="@{/save-instructor}" method="POST">
-                <h1 id="register">Instructor Form</h1>
-
-
-                <div class="tab mt-5">
-                    <p>
-                        <input th:field="*{firstName}" placeholder="First Name"></p>
-                        <p th:if="${#fields.hasErrors('firstName')}" th:error="*{firstName}" class="text-danger"></p>
-                </div>
-
-                <div class="tab">
-                    <p><input th:field="*{lastName}" placeholder="Last Name"></p>
-                    <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger"></p>
-                </div>
-                <div class="tab">
-                    <p><input th:field="*{email}" placeholder="Email"></p>
-                    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></p>
-                </div>
-                <div class="tab">
-                    <p><input th:field="*{youtubeChannel}" placeholder="Youtube Channel"></p>
-                </div>
-
-                <div class="tab">
-                    <p><input th:field="*{hobby}"placeholder="Hobby"></p>
-                </div>
-
-
-                <div class="d-grid gap-2 mt-4">
-                    <button class="btn btn-primary" type="submit">Submit</button>
-                </div>
-
-            </form>
-        </div>
-    </div>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
 
 </body>
 </html>

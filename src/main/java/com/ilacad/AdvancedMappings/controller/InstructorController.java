@@ -10,8 +10,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/instructor")
 public class InstructorController {
 
     InstructorService instructorService;
@@ -22,10 +24,15 @@ public class InstructorController {
     }
 
     @GetMapping("/")
+    public String home () {
+        return "home";
+    }
+
+    @GetMapping("/form")
     public String dashboard (Model model) {
 
         model.addAttribute("instructor", new InstructorDto());
-        return "home";
+        return "form";
     }
 
     @PostMapping("/save-instructor")
@@ -34,7 +41,7 @@ public class InstructorController {
         // Display an error message if user provides an empty or null value/s.
         if (result.hasErrors()) {
             model.addAttribute("instructor", instructorDto);
-            return "home";
+            return "form";
         }
 
         instructorService.saveInstructor(instructorDto);
@@ -43,7 +50,7 @@ public class InstructorController {
     }
 
 
-    @GetMapping("/instructor-list")
+    @GetMapping("/list")
     public String instructorList () {
         return "instructor-list";
     }
