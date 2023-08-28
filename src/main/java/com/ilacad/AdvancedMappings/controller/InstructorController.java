@@ -89,9 +89,18 @@ public class InstructorController {
 
 
     @GetMapping("/details")
-    public String instructorDetails (@RequestParam("id") Long id, Model model) {
+    public String instructorDetails(@RequestParam("id") Long id, Model model) {
 
         Instructor instructorDetails = instructorService.findInstructorById(id);
+
+        String youtubeChannel = instructorDetails.getInstructorDetail().getYoutubeChannel();
+        String hobby = instructorDetails.getInstructorDetail().getHobby();
+
+        youtubeChannel = youtubeChannel.equalsIgnoreCase("") ? "N/A" : youtubeChannel;
+        hobby = hobby.equalsIgnoreCase("") ? "N/A" : hobby;
+
+        model.addAttribute("youtubeChannel", youtubeChannel);
+        model.addAttribute("hobby", hobby);
         model.addAttribute("instructor", instructorDetails);
         return "instructor-details";
     }
