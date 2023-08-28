@@ -41,6 +41,12 @@ public class InstructorController {
     @PostMapping("/save-instructor")
     public String saveInstructor(@Valid @ModelAttribute(name = "instructor") InstructorDto instructorDto, BindingResult result, Model model) {
 
+        // Throw an error message if email exists
+        String email = instructorDto.getEmail();
+        if (instructorService.isEmailExists(email)) {
+            result.rejectValue("email", null, "Email already exists");
+        }
+
         // Display an error message if user provides an empty or null value/s.
         if (result.hasErrors()) {
             model.addAttribute("instructor", instructorDto);
