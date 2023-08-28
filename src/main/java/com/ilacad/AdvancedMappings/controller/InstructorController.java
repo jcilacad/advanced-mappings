@@ -42,4 +42,10 @@ public class InstructorController {
         return "redirect:/?success";
     }
 
+
+    @GetMapping("/instructor-list")
+    public String instructorList () {
+        return "instructor-list";
+    }
+
 }
