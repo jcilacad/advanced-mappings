@@ -72,10 +72,10 @@ public class InstructorController {
     @PostMapping("/search-instructor")
     public String searchInstructor(@Valid @ModelAttribute(name = "instructor") EmailDto emailDto, BindingResult result, Model model) {
 
-        if (result.hasErrors()) {
-            model.addAttribute("instructor", emailDto);
-            return "instructor-list";
-        }
+//        if (result.hasErrors()) {
+//            model.addAttribute("instructor", emailDto);
+//            return "instructor-list";
+//        }
 
 
 
