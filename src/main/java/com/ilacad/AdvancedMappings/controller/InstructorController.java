@@ -55,7 +55,7 @@ public class InstructorController {
 
         instructorService.saveInstructor(instructorDto);
 
-        return "redirect:/?success";
+        return "redirect:/instructor/form?success";
     }
 
 
