@@ -82,7 +82,7 @@
                 <div class="tab mt-5">
                     <p>
                         <input th:field="*{firstName}" placeholder="First Name"></p>
-                    <p th:if="${#fields.hasErrors('firstName')}" th:error="*{firstName}" class="text-danger"></p>
+                    <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="text-danger"></p>
                 </div>
 
                 <div class="tab">
