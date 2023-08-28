@@ -73,13 +73,20 @@ public class InstructorController {
     public String searchInstructor(@Valid @ModelAttribute(name = "email") EmailDto emailDto, BindingResult result, Model model) {
 
         if (result.hasErrors()) {
+            List<InstructorDto> instructorList = instructorService.getAllInstructors();
+
             model.addAttribute("email", emailDto);
+            model.addAttribute("instructorList", instructorList);
             return "instructor-list";
         }
 
+        String email = emailDto.getEmail();
+        if (instructorService.isEmailExists(email)) {
+            Long id = instructorService.getIdByEmail(email);
+            return "redirect:/instructor/instructor-details?id=" + id;
+        }
 
-
-        return "redirect:/instructor/list";
+        return "redirect:/instructor/list?undefined";
     }
 
 

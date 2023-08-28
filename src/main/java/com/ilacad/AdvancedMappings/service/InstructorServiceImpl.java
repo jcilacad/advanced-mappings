@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -58,5 +59,19 @@ public class InstructorServiceImpl implements InstructorService{
     @Override
     public boolean isEmailExists(String email) {
         return instructorRepository.existsByEmail(email);
+    }
+
+    @Override
+    public Long getIdByEmail(String email) {
+
+        Long id;
+        Optional<Instructor> result = instructorRepository.findByEmail(email);
+
+        if (result.isPresent()) {
+            id = result.get().getId();
+        } else {
+            throw new RuntimeException("Did not find email - " + email);
+        }
+        return id;
     }
 }

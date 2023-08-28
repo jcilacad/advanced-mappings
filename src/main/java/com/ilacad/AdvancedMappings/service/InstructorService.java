@@ -11,4 +11,6 @@ public interface InstructorService {
     List<InstructorDto> getAllInstructors ();
 
     boolean isEmailExists(String email);
+
+    Long getIdByEmail(String email);
 }

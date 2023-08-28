@@ -47,16 +47,23 @@
                     <div class="row">
                         <!-- Grid column -->
                         <div class="col-md-12">
-                            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger" role="alert">
+                            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger"
+                                 role="alert">
                                 A simple danger alert—check it out!
                             </div>
+                            <div th:if="${param.undefined}" class="alert alert-danger"
+                                 role="alert">
+                                The instructor didn't exists
+                            </div>
+                            
                             <h2 class="pt-3 pb-4 text-center font-bold font-up deep-purple-text">List of
                                 Instructors</h2>
                             <div class="input-group mb-3">
 
-                                <input th:field="*{email}" type="text" class="form-control" placeholder="Instructor's Email Address"
+                                <input th:field="*{email}" type="text" class="form-control"
+                                       placeholder="Instructor's Email Address"
                                        aria-label="Recipient's username" aria-describedby="button-addon2">
-                                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Button
+                                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search
                                 </button>
 
 
