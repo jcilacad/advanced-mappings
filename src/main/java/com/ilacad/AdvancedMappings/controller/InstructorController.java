@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/instructor")
 public class InstructorController {
@@ -51,7 +53,11 @@ public class InstructorController {
 
 
     @GetMapping("/list")
-    public String instructorList () {
+    public String instructorList (Model model) {
+
+        List<InstructorDto> instructorList = instructorService.getAllInstructors();
+
+        model.addAttribute("instructorList", instructorList);
         return "instructor-list";
     }
 
