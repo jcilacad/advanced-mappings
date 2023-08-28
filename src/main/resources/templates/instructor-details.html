@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Instructor Details Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
     <style>
         body {
@@ -158,7 +160,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a th:href="@{/instructor/list}">Back</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Employee Details</li>
+        <li class="breadcrumb-item active" aria-current="page">Instructor Details</li>
     </ol>
 </nav>
 
@@ -176,7 +178,6 @@
                                 </div>
                                 <h6 class="f-w-600">[[${instructor.firstName}]] [[${instructor.lastName}]]</h6>
                                 <p>Instructor</p>
-                                <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                             </div>
                         </div>
                         <div class="col-sm-8">
