@@ -54,4 +54,9 @@ public class InstructorServiceImpl implements InstructorService{
                 .collect(Collectors.toList());
 
     }
+
+    @Override
+    public boolean isEmailExists(String email) {
+        return instructorRepository.existsByEmail(email);
+    }
 }

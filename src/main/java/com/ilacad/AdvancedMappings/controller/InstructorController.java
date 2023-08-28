@@ -27,12 +27,12 @@ public class InstructorController {
     }
 
     @GetMapping("")
-    public String home () {
+    public String home() {
         return "home";
     }
 
     @GetMapping("/form")
-    public String dashboard (Model model) {
+    public String dashboard(Model model) {
 
         model.addAttribute("instructor", new InstructorDto());
         return "form";
@@ -54,7 +54,7 @@ public class InstructorController {
 
 
     @GetMapping("/list")
-    public String instructorList (Model model) {
+    public String instructorList(Model model) {
 
         List<InstructorDto> instructorList = instructorService.getAllInstructors();
 
@@ -64,7 +64,7 @@ public class InstructorController {
     }
 
     @PostMapping("/search-instructor")
-    public String searchInstructor (@Valid @ModelAttribute(name = "instructor") EmailDto emailDto, BindingResult result, Model model) {
+    public String searchInstructor(@Valid @ModelAttribute(name = "instructor") EmailDto emailDto, BindingResult result, Model model) {
 
         if (result.hasErrors()) {
             model.addAttribute("instructor", emailDto);
@@ -74,8 +74,6 @@ public class InstructorController {
 
         return "redirect:/instructor/list";
     }
-
-
 
 
 }
