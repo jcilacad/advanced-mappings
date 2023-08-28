@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Instructor Details Page</title>
 </head>
 <body>
+
+<h1 th:text="${instructor.getFirstName()}"></h1>
+<h1 th:text="${instructor.lastName}"></h1>
+<h1 th:text="${instructor.email}"></h1>
+<h1 th:text="${instructor.getInstructorDetail().getYoutubeChannel()}"></h1>
+<h1 th:text="${instructor.getInstructorDetail().getHobby()}"></h1>
 
 </body>
 </html>

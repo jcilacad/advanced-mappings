@@ -77,6 +77,17 @@ public class InstructorServiceImpl implements InstructorService{
 
     @Override
     public Instructor findInstructorById(Long id) {
-        return instructorRepository.getReferenceById(id);
+
+        Instructor instructor;
+        Optional<Instructor> result = instructorRepository.findById(id);
+
+        if (result.isPresent()) {
+            instructor = result.get();
+        } else {
+            throw new RuntimeException("Did not find id - " + id);
+        }
+
+        return instructor;
+        
     }
 }

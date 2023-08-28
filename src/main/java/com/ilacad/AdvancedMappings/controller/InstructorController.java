@@ -81,14 +81,14 @@ public class InstructorController {
         String email = emailDto.getEmail();
         if (instructorService.isEmailExists(email)) {
             Long id = instructorService.getIdByEmail(email);
-            return "redirect:/instructor/instructor-details?id=" + id;
+            return "redirect:/instructor/details?id=" + id;
         }
 
         return "redirect:/instructor/list?undefined";
     }
 
 
-    @GetMapping("/instructor-details")
+    @GetMapping("/details")
     public String instructorDetails (@RequestParam("id") Long id, Model model) {
 
         Instructor instructorDetails = instructorService.findInstructorById(id);
