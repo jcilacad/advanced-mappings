@@ -77,6 +77,8 @@ public class InstructorController {
             return "instructor-list";
         }
 
+
+
         return "redirect:/instructor/list";
     }
 

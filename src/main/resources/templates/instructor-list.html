@@ -43,22 +43,25 @@
         <div class="card mb-4">
             <div class="card-body">
                 <!-- Grid row -->
-                <div class="row">
-                    <!-- Grid column -->
-                    <div class="col-md-12">
-                        <h2 class="pt-3 pb-4 text-center font-bold font-up deep-purple-text">List of Instructors</h2>
-                        <div class="input-group mb-3">
-                            <form th:action="@{/search-instructor}" th:object="${instructor}" method="POST">
+                <form th:action="@{/search-instructor}" th:object="${instructor}" method="POST">
+                    <div class="row">
+                        <!-- Grid column -->
+                        <div class="col-md-12">
+                            <h2 class="pt-3 pb-4 text-center font-bold font-up deep-purple-text">List of
+                                Instructors</h2>
+                            <div class="input-group mb-3">
+
                                 <input type="text" class="form-control" placeholder="Instructor's Email Address"
                                        aria-label="Recipient's username" aria-describedby="button-addon2">
                                 <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button
                                 </button>
 
-                            </form>
+
+                            </div>
                         </div>
+                        <!-- Grid column -->
                     </div>
-                    <!-- Grid column -->
-                </div>
+                </form>
                 <!-- Grid row -->
                 <!--Table-->
                 <div class="table-responsive">
