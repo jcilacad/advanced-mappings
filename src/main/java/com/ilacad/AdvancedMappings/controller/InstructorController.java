@@ -25,7 +25,7 @@ public class InstructorController {
         this.instructorService = instructorService;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public String home () {
         return "home";
     }
@@ -60,5 +60,8 @@ public class InstructorController {
         model.addAttribute("instructorList", instructorList);
         return "instructor-list";
     }
+
+
+
 
 }
