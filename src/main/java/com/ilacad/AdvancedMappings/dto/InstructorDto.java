@@ -2,9 +2,13 @@ package com.ilacad.AdvancedMappings.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.Data;
+import lombok.*;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class InstructorDto {
 
     private Long id;
@@ -22,4 +26,5 @@ public class InstructorDto {
     private String youtubeChannel;
 
     private String hobby;
+
 }

@@ -7,6 +7,9 @@ import com.ilacad.AdvancedMappings.repository.InstructorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class InstructorServiceImpl implements InstructorService{
 
@@ -34,5 +37,21 @@ public class InstructorServiceImpl implements InstructorService{
 
         // Save the instance of instructor
         instructorRepository.save(instructor);
+    }
+
+    @Override
+    public List<InstructorDto> getAllInstructors() {
+
+        List<Instructor> instructorList = instructorRepository.findAll();
+
+        return instructorList.stream()
+                .map(instructor -> new InstructorDto(instructor.getId(),
+                        instructor.getFirstName(),
+                        instructor.getLastName(),
+                        instructor.getEmail(),
+                        instructor.getInstructorDetail().getYoutubeChannel(),
+                        instructor.getInstructorDetail().getHobby()))
+                .collect(Collectors.toList());
+
     }
 }
