@@ -8,6 +8,6 @@ import lombok.Data;
 public class EmailDto {
 
     @Email
-    @NotEmpty(message = "Invalid, you must input a value!")
+    @NotEmpty(message = "Email must not be empty")
     private String email;
 }

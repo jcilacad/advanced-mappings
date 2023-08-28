@@ -47,6 +47,9 @@
                     <div class="row">
                         <!-- Grid column -->
                         <div class="col-md-12">
+                            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger" role="alert">
+                                A simple danger alert—check it out!
+                            </div>
                             <h2 class="pt-3 pb-4 text-center font-bold font-up deep-purple-text">List of
                                 Instructors</h2>
                             <div class="input-group mb-3">
