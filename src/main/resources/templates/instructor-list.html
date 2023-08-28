@@ -14,7 +14,8 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" th:href="@{/instructor}">Instructor</a>
-        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-collapse collapse" id="navbarNav" style="">
@@ -47,9 +48,13 @@
                     <div class="col-md-12">
                         <h2 class="pt-3 pb-4 text-center font-bold font-up deep-purple-text">List of Instructors</h2>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Instructor's Email Address"
-                                   aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+                            <form th:action="@{/search-instructor}" th:object="${instructor}" method="POST">
+                                <input type="text" class="form-control" placeholder="Instructor's Email Address"
+                                       aria-label="Recipient's username" aria-describedby="button-addon2">
+                                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button
+                                </button>
+
+                            </form>
                         </div>
                     </div>
                     <!-- Grid column -->

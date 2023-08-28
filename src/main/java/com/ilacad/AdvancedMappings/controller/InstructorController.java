@@ -1,5 +1,6 @@
 package com.ilacad.AdvancedMappings.controller;
 
+import com.ilacad.AdvancedMappings.dto.EmailDto;
 import com.ilacad.AdvancedMappings.dto.InstructorDto;
 import com.ilacad.AdvancedMappings.service.InstructorService;
 import jakarta.validation.Valid;
@@ -57,6 +58,7 @@ public class InstructorController {
 
         List<InstructorDto> instructorList = instructorService.getAllInstructors();
 
+        model.addAttribute("instructor", new EmailDto());
         model.addAttribute("instructorList", instructorList);
         return "instructor-list";
     }
