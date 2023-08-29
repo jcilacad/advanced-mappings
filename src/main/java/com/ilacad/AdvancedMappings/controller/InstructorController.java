@@ -110,7 +110,7 @@ public class InstructorController {
 
         // Delete an instructor
         instructorService.deleteInstructorById(id);
-        return "redirect:/instructor/list?delete";
+        return "redirect:/instructor/list?successDelete";
     }
 
 
