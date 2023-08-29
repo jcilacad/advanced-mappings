@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -55,6 +55,10 @@
                             <div th:if="${param.undefined}" class="alert alert-danger"
                                  role="alert">
                                 Email does not exists
+                            </div>
+
+                            <div th:if="${param.delete}" class="alert alert-success" role="alert">
+                                Successfully deleted an instructor
                             </div>
 
                             <h2 class="pt-3 pb-4 text-center font-bold font-up deep-purple-text">List of
