@@ -105,5 +105,13 @@ public class InstructorController {
         return "instructor-details";
     }
 
+    @PostMapping("/delete-instructor/{id}")
+    public String deleteInstructor (@PathVariable(name = "id") Long id) {
+
+        // Delete an instructor
+        instructorService.deleteInstructorById(id);
+        return "redirect:/list?success-delete";
+    }
+
 
 }
