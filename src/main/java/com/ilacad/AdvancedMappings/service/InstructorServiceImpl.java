@@ -90,4 +90,9 @@ public class InstructorServiceImpl implements InstructorService{
         return instructor;
 
     }
+
+    @Override
+    public void deleteInstructorById(Long id) {
+        instructorRepository.deleteById(id);
+    }
 }

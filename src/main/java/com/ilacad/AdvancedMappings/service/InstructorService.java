@@ -16,4 +16,6 @@ public interface InstructorService {
     Long getIdByEmail(String email);
 
     Instructor findInstructorById(Long id);
+
+    void deleteInstructorById(Long id);
 }
