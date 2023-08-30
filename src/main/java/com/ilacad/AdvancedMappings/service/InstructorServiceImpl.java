@@ -116,6 +116,9 @@ public class InstructorServiceImpl implements InstructorService {
 
     @Override
     public void deleteOtherDetailsById(Long id) {
+
+        Instructor instructor = findInstructorById(id);
+        instructor.setInstructorDetail(null);
         instructorDetailRepository.deleteById(id);
     }
 }
