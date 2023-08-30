@@ -130,5 +130,12 @@ public class InstructorController {
         return "redirect:/instructor/list?successDelete";
     }
 
+    @GetMapping("/delete")
+    public String deleteOtherDetails(@RequestParam(name = "id") Long id) {
+
+        instructorService.deleteOtherDetailsById(id);
+        return "redirect:/details?id=" + id + "&deleteOtherDetails";
+    }
+
 
 }

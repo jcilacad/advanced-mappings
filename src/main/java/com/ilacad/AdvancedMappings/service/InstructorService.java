@@ -20,4 +20,6 @@ public interface InstructorService {
     Instructor findInstructorById(Long id);
 
     void deleteInstructorById(Long id);
+
+    void deleteOtherDetailsById(Long id);
 }

@@ -3,6 +3,7 @@ package com.ilacad.AdvancedMappings.service;
 import com.ilacad.AdvancedMappings.dto.InstructorDto;
 import com.ilacad.AdvancedMappings.entity.Instructor;
 import com.ilacad.AdvancedMappings.entity.InstructorDetail;
+import com.ilacad.AdvancedMappings.repository.InstructorDetailRepository;
 import com.ilacad.AdvancedMappings.repository.InstructorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,10 +16,12 @@ import java.util.stream.Collectors;
 public class InstructorServiceImpl implements InstructorService {
 
     InstructorRepository instructorRepository;
+    InstructorDetailRepository instructorDetailRepository;
 
     @Autowired
-    public InstructorServiceImpl(InstructorRepository instructorRepository) {
+    public InstructorServiceImpl(InstructorRepository instructorRepository, InstructorDetailRepository instructorDetailRepository) {
         this.instructorRepository = instructorRepository;
+        this.instructorDetailRepository = instructorDetailRepository;
     }
 
     @Override
@@ -109,5 +112,10 @@ public class InstructorServiceImpl implements InstructorService {
     @Override
     public void deleteInstructorById(Long id) {
         instructorRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteOtherDetailsById(Long id) {
+        instructorDetailRepository.deleteById(id);
     }
 }
