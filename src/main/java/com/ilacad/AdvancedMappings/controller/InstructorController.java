@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.print.attribute.standard.PresentationDirection;
 import java.util.List;
 
 @Controller
@@ -110,13 +111,13 @@ public class InstructorController {
     @PostMapping("/update-details")
     public String updateInstructorDetails(@Valid @ModelAttribute(name = "updatedDetails") InstructorDto instructorDto, BindingResult result, Model model) {
 
-        if (result.hasErrors()) {
-            model.addAttribute("updatedValue", instructorDto);
-            return "redirect:/updated-details";
+        Long id = instructorService.getIdByEmail(instructorDto.getEmail());
+        // If the first name or last name is empty, display an error message
+        if (instructorDto.getFirstName().isEmpty() || instructorDto.getLastName().isEmpty()) {
+            return "redirect:/instructor/details?id=" + id.toString() + "&emptyField";
         }
 
         instructorService.updateInstructor(instructorDto);
-        Long id = instructorService.getIdByEmail(instructorDto.getEmail());
 
         return "redirect:/instructor/details?id=" + id.toString() + "&updated";
     }

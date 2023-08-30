@@ -297,6 +297,10 @@
                                     Successfully Updated an Instructor Details
                                 </div>
 
+                                <div th:if="${param.emptyField}" class="alert alert-danger" role="alert">
+                                    The field must not be empty
+                                </div>
+
 
                                 <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Instructor Details</h6>
                                 <div class="row">
