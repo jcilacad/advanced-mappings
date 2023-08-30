@@ -6,6 +6,7 @@ import com.ilacad.AdvancedMappings.entity.Instructor;
 import com.ilacad.AdvancedMappings.service.InstructorService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -106,8 +107,24 @@ public class InstructorController {
         return "instructor-details";
     }
 
+    @PostMapping("/update-details")
+    public String updateInstructorDetails(@ModelAttribute(name = "updatedDetails") InstructorDto instructorDto, BindingResult result, Model model) {
+
+        String email = instructorDto.getEmail();
+        Long id = instructorDto.getId();
+
+        if (instructorService.isEmailExists(email)) {
+            result.rejectValue("email", null, "Email already exists");
+            model.addAttribute("updatedDetails", instructorDto);
+            return "instructor-details";
+        }
+
+        instructorService.saveInstructor(instructorDto);
+        return "redirect:/details?id=" + id;
+    }
+
     @PostMapping("/delete-instructor/{id}")
-    public String deleteInstructor (@PathVariable(name = "id") Long id) {
+    public String deleteInstructor(@PathVariable(name = "id") Long id) {
 
         // Delete an instructor
         instructorService.deleteInstructorById(id);
