@@ -120,7 +120,7 @@ public class InstructorController {
         }
 
         instructorService.saveInstructor(instructorDto);
-        return "redirect:/details?id=" + id;
+        return "redirect:/details?id=" + id + "&?updated";
     }
 
     @PostMapping("/delete-instructor/{id}")
