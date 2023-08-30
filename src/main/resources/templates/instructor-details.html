@@ -142,6 +142,16 @@
             transition: all 0.3s ease-in-out;
         }
 
+        input {
+            padding: 10px;
+            width: 100%;
+            font-size: 17px;
+            font-family: Raleway;
+            border: 1px solid #aaaaaa;
+            border-radius: 10px;
+            -webkit-appearance: none;
+        }
+
 
     </style>
 
@@ -185,28 +195,45 @@
                                         data-bs-target="#updateModal" data-bs-whatever="@getbootstrap">UPDATE
                                 </button>
 
-                                <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
+                                <div class="modal fade" id="updateModal" tabindex="-1"
+                                     aria-labelledby="updateModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-fullscreen-md-down">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="updateModalLabel">New message</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                <h1 class="modal-title fs-5" id="updateModalLabel" style="color: black">Update Instructor Details</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <form>
-                                                    <div class="mb-3">
-                                                        <label for="recipient-name" class="col-form-label" style="color: black">Recipient:</label>
-                                                        <input type="text" class="form-control" id="recipient-name">
+                                                    <div class="tab mt-5">
+                                                        <p>
+                                                            <input placeholder="First Name"></p>
+                                                        <p class="text-danger"></p>
                                                     </div>
-                                                    <div class="mb-3">
-                                                        <label for="message-text" class="col-form-label" style="color: black">Message:</label>
-                                                        <textarea class="form-control" id="message-text"></textarea>
+
+                                                    <div class="tab">
+                                                        <p><input placeholder="Last Name"></p>
+                                                        <p class="text-danger"></p>
+                                                    </div>
+                                                    <div class="tab">
+                                                        <p><input placeholder="Email"></p>
+                                                        <p class="text-danger"></p>
+                                                    </div>
+                                                    <div class="tab">
+                                                        <p><input placeholder="Youtube Channel"></p>
+                                                    </div>
+
+                                                    <div class="tab">
+                                                        <p><input placeholder="Hobby"></p>
                                                     </div>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Send message</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <button type="button" class="btn btn-primary">Update</button>
                                             </div>
                                         </div>
                                     </div>
