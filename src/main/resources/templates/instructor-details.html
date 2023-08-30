@@ -200,41 +200,56 @@
                                     <div class="modal-dialog modal-fullscreen-md-down">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="updateModalLabel" style="color: black">Update Instructor Details</h1>
+                                                <h1 class="modal-title fs-5" id="updateModalLabel" style="color: black">
+                                                    Update Instructor Details</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                             </div>
-                                            <div class="modal-body">
-                                                <form>
+                                            <form th:action="@{/update-details}" th:object="${updatedDetails}"
+                                                  method="POST">
+                                                <div class="modal-body">
+
                                                     <div class="tab mt-5">
                                                         <p>
-                                                            <input placeholder="First Name"></p>
+                                                            <input placeholder="First Name"
+                                                                   th:value="${instructor.firstName}" name="firstName"
+                                                                   id="firstName"></p>
                                                         <p class="text-danger"></p>
                                                     </div>
 
                                                     <div class="tab">
-                                                        <p><input placeholder="Last Name"></p>
+                                                        <p><input placeholder="Last Name"
+                                                                  th:value="${instructor.lastName}" name="lastName"
+                                                                  id="lastName"></p>
                                                         <p class="text-danger"></p>
                                                     </div>
                                                     <div class="tab">
-                                                        <p><input placeholder="Email"></p>
+                                                        <p><input placeholder="Email" th:value="${instructor.email}"
+                                                                  name="email" id="email"></p>
                                                         <p class="text-danger"></p>
                                                     </div>
                                                     <div class="tab">
-                                                        <p><input placeholder="Youtube Channel"></p>
+                                                        <p><input placeholder="Youtube Channel"
+                                                                  th:value="${instructor.getInstructorDetail().youtubeChannel}"
+                                                                  name="youtubeChannel" id="youtubeChannel"></p>
                                                     </div>
 
                                                     <div class="tab">
-                                                        <p><input placeholder="Hobby"></p>
+                                                        <p><input placeholder="Hobby"
+                                                                  th:value="${instructor.getInstructorDetail().hobby}"
+                                                                  name="hobby" id="hobby"></p>
                                                     </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                                    Close
-                                                </button>
-                                                <button type="button" class="btn btn-primary">Update</button>
-                                            </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary">Update</button>
+                                                </div>
+
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
