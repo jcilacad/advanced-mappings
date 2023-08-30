@@ -99,6 +99,7 @@ public class InstructorController {
         youtubeChannel = youtubeChannel.equalsIgnoreCase("") ? "N/A" : youtubeChannel;
         hobby = hobby.equalsIgnoreCase("") ? "N/A" : hobby;
 
+        model.addAttribute("updatedDetails", new InstructorDto());
         model.addAttribute("youtubeChannel", youtubeChannel);
         model.addAttribute("hobby", hobby);
         model.addAttribute("instructor", instructorDetails);
