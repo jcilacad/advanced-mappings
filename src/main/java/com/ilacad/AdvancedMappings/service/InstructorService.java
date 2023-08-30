@@ -11,7 +11,7 @@ public interface InstructorService {
 
     void updateInstructor(InstructorDto instructorDto);
 
-    List<InstructorDto> getAllInstructors();
+    List<Instructor> getAllInstructors();
 
     boolean isEmailExists(String email);
 

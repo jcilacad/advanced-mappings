@@ -62,7 +62,7 @@ public class InstructorController {
     @GetMapping("/list")
     public String instructorList(Model model) {
 
-        List<InstructorDto> instructorList = instructorService.getAllInstructors();
+        List<Instructor> instructorList = instructorService.getAllInstructors();
 
         model.addAttribute("email", new EmailDto());
         model.addAttribute("instructorList", instructorList);
@@ -73,7 +73,7 @@ public class InstructorController {
     public String searchInstructor(@Valid @ModelAttribute(name = "email") EmailDto emailDto, BindingResult result, Model model) {
 
         if (result.hasErrors()) {
-            List<InstructorDto> instructorList = instructorService.getAllInstructors();
+            List<Instructor> instructorList = instructorService.getAllInstructors();
 
             model.addAttribute("email", emailDto);
             model.addAttribute("instructorList", instructorList);
@@ -95,11 +95,12 @@ public class InstructorController {
 
         Instructor instructorDetails = instructorService.findInstructorById(id);
 
-        String youtubeChannel = instructorDetails.getInstructorDetail().getYoutubeChannel();
-        String hobby = instructorDetails.getInstructorDetail().getHobby();
-
-        youtubeChannel = youtubeChannel.equalsIgnoreCase("") ? "N/A" : youtubeChannel;
-        hobby = hobby.equalsIgnoreCase("") ? "N/A" : hobby;
+        String youtubeChannel = "N/A";
+        String hobby = "N/A";
+        if (instructorDetails.getInstructorDetail() != null) {
+            youtubeChannel = instructorDetails.getInstructorDetail().getYoutubeChannel();
+            hobby = instructorDetails.getInstructorDetail().getHobby();
+        }
 
         model.addAttribute("updatedDetails", new InstructorDto());
         model.addAttribute("youtubeChannel", youtubeChannel);
@@ -134,7 +135,7 @@ public class InstructorController {
     public String deleteOtherDetails(@RequestParam(name = "id") Long id) {
 
         instructorService.deleteOtherDetailsById(id);
-        return "redirect:/details?id=" + id + "&deleteOtherDetails";
+        return "redirect:/instructor/details?id=" + id.toString() + "&deleteOtherDetails";
     }
 
 

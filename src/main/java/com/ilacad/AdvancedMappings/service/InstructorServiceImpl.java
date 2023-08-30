@@ -59,19 +59,8 @@ public class InstructorServiceImpl implements InstructorService {
     }
 
     @Override
-    public List<InstructorDto> getAllInstructors() {
-
-        List<Instructor> instructorList = instructorRepository.findAll();
-
-        return instructorList.stream()
-                .map(instructor -> new InstructorDto(instructor.getId(),
-                        instructor.getFirstName(),
-                        instructor.getLastName(),
-                        instructor.getEmail(),
-                        instructor.getInstructorDetail().getYoutubeChannel(),
-                        instructor.getInstructorDetail().getHobby()))
-                .collect(Collectors.toList());
-
+    public List<Instructor> getAllInstructors() {
+        return instructorRepository.findAll();
     }
 
     @Override
@@ -119,6 +108,8 @@ public class InstructorServiceImpl implements InstructorService {
 
         Instructor instructor = findInstructorById(id);
         instructor.setInstructorDetail(null);
+
+        instructorRepository.save(instructor);
         instructorDetailRepository.deleteById(id);
     }
 }

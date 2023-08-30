@@ -100,8 +100,8 @@
                             <td th:text="${instructor.firstName}"></td>
                             <td th:text="${instructor.lastName}"></td>
                             <td th:text="${instructor.email}"></td>
-                            <td th:text="${instructor.youtubeChannel}"></td>
-                            <td th:text="${instructor.hobby}"></td>
+                            <td th:text="${instructor.getInstructorDetail() == null ? 'N/A' : instructor.getInstructorDetail().youtubeChannel}"></td>
+                            <td th:text="${instructor.getInstructorDetail() == null ? 'N/A' : instructor.getInstructorDetail().hobby}"></td>
                         </tr>
                         </tbody>
                     </table>
