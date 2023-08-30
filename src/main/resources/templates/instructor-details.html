@@ -205,7 +205,8 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                             </div>
-                                            <form th:action="@{/instructor/update-details}" th:object="${updatedDetails}"
+                                            <form th:action="@{/instructor/update-details}"
+                                                  th:object="${updatedDetails}"
                                                   method="POST">
                                                 <div class="modal-body">
 
@@ -214,17 +215,20 @@
                                                             <input placeholder="First Name"
                                                                    th:value="${instructor.firstName}" name="firstName"
                                                                    id="firstName"></p>
-                                                        <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="text-danger"></p>
+                                                        <p th:if="${#fields.hasErrors('firstName')}"
+                                                           th:errors="*{firstName}" class="text-danger"></p>
                                                     </div>
 
                                                     <div class="tab">
                                                         <p><input placeholder="Last Name"
                                                                   th:value="${instructor.lastName}" name="lastName"
                                                                   id="lastName"></p>
-                                                        <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger"></p>
+                                                        <p th:if="${#fields.hasErrors('lastName')}"
+                                                           th:errors="*{lastName}" class="text-danger"></p>
                                                     </div>
                                                     <div class="tab">
-                                                        <p><input hidden placeholder="Email" th:value="${instructor.email}"
+                                                        <p><input hidden placeholder="Email"
+                                                                  th:value="${instructor.email}"
                                                                   name="email" id="email"></p>
                                                     </div>
                                                     <div class="tab">
@@ -302,7 +306,7 @@
                                 </div>
 
 
-                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Instructor Details</h6>
+                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Personal Details</h6>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <p class="m-b-10 f-w-600">First Name</p>
@@ -316,6 +320,11 @@
                                         <p class="m-b-10 f-w-600">Email</p>
                                         <h6 th:text="${instructor.email}" class="text-muted f-w-400"></h6>
                                     </div>
+
+                                    <h6 class="m-b-20 p-b-5 b-b-default f-w-600 mt-5">Other Details <span><a
+                                            th:href="@{'/instructor/delete?id=' + ${instructor.getInstructorDetail().getId()}}" class="text-danger">(Remove)</a></span></h6>
+
+
                                     <div class="col-sm-6">
                                         <p class="m-b-10 f-w-600">Youtube Channel</p>
                                         <h6 th:text="${youtubeChannel}" class="text-muted f-w-400"></h6>
@@ -324,6 +333,7 @@
                                         <p class="m-b-10 f-w-600">Hobby</p>
                                         <h6 th:text="${hobby}" class="text-muted f-w-400"></h6>
                                     </div>
+
                                 </div>
 
 
