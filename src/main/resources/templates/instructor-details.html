@@ -205,7 +205,7 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                             </div>
-                                            <form th:action="@{/update-details}" th:object="${updatedDetails}"
+                                            <form th:action="@{/instructor/update-details}" th:object="${updatedDetails}"
                                                   method="POST">
                                                 <div class="modal-body">
 
@@ -214,19 +214,18 @@
                                                             <input placeholder="First Name"
                                                                    th:value="${instructor.firstName}" name="firstName"
                                                                    id="firstName"></p>
-                                                        <p class="text-danger"></p>
+                                                        <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="text-danger"></p>
                                                     </div>
 
                                                     <div class="tab">
                                                         <p><input placeholder="Last Name"
                                                                   th:value="${instructor.lastName}" name="lastName"
                                                                   id="lastName"></p>
-                                                        <p class="text-danger"></p>
+                                                        <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger"></p>
                                                     </div>
                                                     <div class="tab">
-                                                        <p><input placeholder="Email" th:value="${instructor.email}"
+                                                        <p><input hidden placeholder="Email" th:value="${instructor.email}"
                                                                   name="email" id="email"></p>
-                                                        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></p>
                                                     </div>
                                                     <div class="tab">
                                                         <p><input placeholder="Youtube Channel"
@@ -292,6 +291,13 @@
 
                         <div class="col-sm-8">
                             <div class="card-block">
+
+
+                                <div th:if="${param.updated}" class="alert alert-success" role="alert">
+                                    Successfully Updated an Instructor Details
+                                </div>
+
+
                                 <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Instructor Details</h6>
                                 <div class="row">
                                     <div class="col-sm-6">

@@ -108,19 +108,17 @@ public class InstructorController {
     }
 
     @PostMapping("/update-details")
-    public String updateInstructorDetails(@ModelAttribute(name = "updatedDetails") InstructorDto instructorDto, BindingResult result, Model model) {
+    public String updateInstructorDetails(@Valid @ModelAttribute(name = "updatedDetails") InstructorDto instructorDto, BindingResult result, Model model) {
 
-        String email = instructorDto.getEmail();
-        Long id = instructorDto.getId();
-
-        if (instructorService.isEmailExists(email)) {
-            result.rejectValue("email", null, "Email already exists");
-            model.addAttribute("updatedDetails", instructorDto);
-            return "instructor-details";
+        if (result.hasErrors()) {
+            model.addAttribute("updatedValue", instructorDto);
+            return "redirect:/updated-details";
         }
 
-        instructorService.saveInstructor(instructorDto);
-        return "redirect:/details?id=" + id + "&?updated";
+        instructorService.updateInstructor(instructorDto);
+        Long id = instructorService.getIdByEmail(instructorDto.getEmail());
+
+        return "redirect:/instructor/details?id=" + id.toString() + "&updated";
     }
 
     @PostMapping("/delete-instructor/{id}")

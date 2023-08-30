@@ -9,7 +9,9 @@ public interface InstructorService {
 
     void saveInstructor(InstructorDto instructorDto);
 
-    List<InstructorDto> getAllInstructors ();
+    void updateInstructor(InstructorDto instructorDto);
+
+    List<InstructorDto> getAllInstructors();
 
     boolean isEmailExists(String email);
 

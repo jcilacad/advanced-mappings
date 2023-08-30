@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class InstructorServiceImpl implements InstructorService{
+public class InstructorServiceImpl implements InstructorService {
 
     InstructorRepository instructorRepository;
 
@@ -38,6 +38,21 @@ public class InstructorServiceImpl implements InstructorService{
 
         // Save the instance of instructor
         instructorRepository.save(instructor);
+    }
+
+    @Override
+    public void updateInstructor(InstructorDto instructorDto) {
+
+        Long id = getIdByEmail(instructorDto.getEmail());
+        Instructor foundInstructor = findInstructorById(id);
+
+        foundInstructor.setFirstName(instructorDto.getFirstName());
+        foundInstructor.setLastName(instructorDto.getLastName());
+        foundInstructor.setEmail(instructorDto.getEmail());
+        foundInstructor.getInstructorDetail().setYoutubeChannel(instructorDto.getYoutubeChannel());
+        foundInstructor.getInstructorDetail().setHobby(instructorDto.getHobby());
+
+        instructorRepository.save(foundInstructor);
     }
 
     @Override
