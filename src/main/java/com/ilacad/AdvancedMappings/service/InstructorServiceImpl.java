@@ -34,6 +34,9 @@ public class InstructorServiceImpl implements InstructorService {
         String youtubeChannel = instructorDto.getYoutubeChannel();
         String hobby = instructorDto.getHobby();
 
+        youtubeChannel = youtubeChannel.isEmpty() ? "N/A" : youtubeChannel;
+        hobby = hobby.isEmpty() ? "N/A" : hobby;
+
         // Create a new instance of instructor detail and instructor
         InstructorDetail instructorDetail = new InstructorDetail(youtubeChannel, hobby);
         Instructor instructor = new Instructor(firstName, lastName, email);
@@ -54,7 +57,7 @@ public class InstructorServiceImpl implements InstructorService {
             foundInstructor.setInstructorDetail(new InstructorDetail(
                     instructorDto.getYoutubeChannel(),
                     instructorDto.getHobby()
-            ));    
+            ));
         }
 
         foundInstructor.setFirstName(instructorDto.getFirstName());
