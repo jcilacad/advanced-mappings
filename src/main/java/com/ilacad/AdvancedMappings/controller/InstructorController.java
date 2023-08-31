@@ -152,5 +152,4 @@ public class InstructorController {
         return "redirect:/details?id=" + id + "&addCourse";
     }
 
-
 }

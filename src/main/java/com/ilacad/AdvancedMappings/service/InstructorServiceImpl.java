@@ -19,7 +19,6 @@ public class InstructorServiceImpl implements InstructorService {
 
     InstructorRepository instructorRepository;
     InstructorDetailRepository instructorDetailRepository;
-
     CourseRepository courseRepository;
 
     @Autowired
