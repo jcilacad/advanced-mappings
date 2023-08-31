@@ -49,6 +49,14 @@ public class InstructorServiceImpl implements InstructorService {
         Long id = getIdByEmail(instructorDto.getEmail());
         Instructor foundInstructor = findInstructorById(id);
 
+
+        if (foundInstructor.getInstructorDetail() == null) {
+            foundInstructor.setInstructorDetail(new InstructorDetail(
+                    instructorDto.getYoutubeChannel(),
+                    instructorDto.getHobby()
+            ));    
+        }
+
         foundInstructor.setFirstName(instructorDto.getFirstName());
         foundInstructor.setLastName(instructorDto.getLastName());
         foundInstructor.setEmail(instructorDto.getEmail());
