@@ -257,7 +257,7 @@
                                     </div>
                                 </div>
 
-                                <button type="button" class="btn btn-danger btn-block" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-danger btn-block mb-2" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal">
                                     DELETE
                                 </button>
@@ -288,6 +288,56 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <button type="button" class="btn btn-warning btn-block" data-bs-toggle="modal"
+                                        data-bs-target="#addCourse">ADD COURSE
+                                </button>
+
+                                <div class="modal fade" id="addCourse" tabindex="-1"
+                                     aria-labelledby="updateModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" style="color: black" id="addCourseLabel">Add Course</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="mb-3">
+                                                        <input type="text" class="form-control" placeholder="Course Title">
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <button type="button" class="btn btn-primary">Send message</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <script>
+                                    const addCourse = document.getElementById('addCourse')
+                                    if (addCourse) {
+                                        addCourse.addEventListener('show.bs.modal', event => {
+                                            // Button that triggered the modal
+                                            const courseButton = event.relatedTarget
+                                            // Extract info from data-bs-* attributes
+                                            const courseRecipient = courseButton.getAttribute('data-bs-whatever')
+                                            // If necessary, you could initiate an Ajax request here
+                                            // and then do the updating in a callback.
+
+                                            // Update the modal's content.
+                                            const courseModalBodyInput = addCourse.querySelector('.modal-body input')
+
+                                            courseModalBodyInput.value = courseRecipient
+                                        })
+                                    }
+                                </script>
 
 
                             </div>
@@ -326,7 +376,8 @@
                                     </div>
 
                                     <h6 class="m-b-20 p-b-5 b-b-default f-w-600 mt-5">Other Details <span><a
-                                            th:href="@{'/instructor/delete?id=' + ${instructor.getId()}}" class="text-danger">(Remove)</a></span></h6>
+                                            th:href="@{'/instructor/delete?id=' + ${instructor.getId()}}"
+                                            class="text-danger">(Remove)</a></span></h6>
 
 
                                     <div class="col-sm-6">
