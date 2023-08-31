@@ -50,6 +50,5 @@ public class Instructor {
     public void addCourse (Course course) {
         course.setInstructor(this);
         courses.add(course);
-
     }
 }

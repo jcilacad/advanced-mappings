@@ -119,9 +119,11 @@ public class InstructorServiceImpl implements InstructorService {
 
         Course course = courseRepository.findByInstructor_Id(id);
 
-        course.setInstructor(null);
+        if (course != null) {
+            course.setInstructor(null);
+            courseRepository.save(course);
+        }
 
-        courseRepository.save(course);
         instructorRepository.deleteById(id);
 
     }
