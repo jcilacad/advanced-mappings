@@ -310,7 +310,8 @@
                                                 <div class="modal-body">
                                                     <form>
                                                         <div class="mb-3">
-                                                            <input th:field="*{courseName}" type="text" class="form-control"
+                                                            <input th:field="*{courseName}" type="text"
+                                                                   class="form-control"
                                                                    placeholder="Course Title">
                                                         </div>
 
@@ -400,6 +401,15 @@
                                     <div class="col-sm-6">
                                         <p class="m-b-10 f-w-600">Hobby</p>
                                         <h6 th:text="${hobby}" class="text-muted f-w-400"></h6>
+                                    </div>
+
+
+                                    <h6 class="m-b-20 p-b-5 b-b-default f-w-600 mt-5">Courses</h6>
+
+
+                                    <div class="col-sm-6" th:each="courseName : ${instructor.getCourses()}">
+                                        <p class="m-b-10 f-w-600">Course</p>
+                                        <h6 th:text="${courseName.getTitle()}" class="text-muted f-w-400"></h6>
                                     </div>
 
                                 </div>
