@@ -1,7 +1,9 @@
 package com.ilacad.AdvancedMappings.controller;
 
+import com.ilacad.AdvancedMappings.dto.CourseDto;
 import com.ilacad.AdvancedMappings.dto.EmailDto;
 import com.ilacad.AdvancedMappings.dto.InstructorDto;
+import com.ilacad.AdvancedMappings.entity.Course;
 import com.ilacad.AdvancedMappings.entity.Instructor;
 import com.ilacad.AdvancedMappings.service.InstructorService;
 import jakarta.validation.Valid;
@@ -101,6 +103,7 @@ public class InstructorController {
         }
 
         model.addAttribute("updatedDetails", new InstructorDto());
+        model.addAttribute("course", new CourseDto());
         model.addAttribute("youtubeChannel", youtubeChannel);
         model.addAttribute("hobby", hobby);
         model.addAttribute("instructor", instructorDetails);
@@ -134,6 +137,19 @@ public class InstructorController {
 
         instructorService.deleteOtherDetailsById(id);
         return "redirect:/instructor/details?id=" + id.toString() + "&deleteOtherDetails";
+    }
+
+    @PostMapping("/add-course/{id}")
+    public String addCourse(@PathVariable Long id, @Valid @ModelAttribute("course") CourseDto courseDto,
+                            BindingResult result) {
+
+        if (result.hasErrors()) {
+            return "redirect:/details?id=" + id + "&emptyField";
+        }
+
+        instructorService.addCourse(id, courseDto);
+
+        return "redirect:/details?id=" + id + "&addCourse";
     }
 
 

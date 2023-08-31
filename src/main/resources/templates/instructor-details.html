@@ -293,32 +293,42 @@
                                         data-bs-target="#addCourse">ADD COURSE
                                 </button>
 
-                                <div class="modal fade" id="addCourse" tabindex="-1"
-                                     aria-labelledby="updateModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" style="color: black" id="addCourseLabel">Add Course</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form>
-                                                    <div class="mb-3">
-                                                        <input type="text" class="form-control" placeholder="Course Title">
-                                                    </div>
+                                <form th:action="@{/instructor/add-course/{id}(id=${instructor.getId()})}"
+                                      th:object="${course}"
+                                      method="POST">
+                                    <div class="modal fade" id="addCourse" tabindex="-1"
+                                         aria-labelledby="updateModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" style="color: black"
+                                                        id="addCourseLabel">
+                                                        Add Course</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form>
+                                                        <div class="mb-3">
+                                                            <input th:field="*{courseName}" type="text" class="form-control"
+                                                                   placeholder="Course Title">
+                                                        </div>
 
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                                    Close
-                                                </button>
-                                                <button type="button" class="btn btn-primary">Send message</button>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">
+                                                        Close
+                                                    </button>
+
+                                                    <button type="submit" class="btn btn-primary">Add</button>
+
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
 
                                 <script>
                                     const addCourse = document.getElementById('addCourse')
@@ -351,6 +361,10 @@
                                     Successfully Updated an Instructor Details
                                 </div>
 
+                                <div th:if="${param.addCourse}" class="alert alert-success" role="alert">
+                                    Successfully Added a Course
+                                </div>
+
                                 <div th:if="${param.emptyField}" class="alert alert-danger" role="alert">
                                     The field must not be empty
                                 </div>
@@ -358,7 +372,6 @@
                                 <div th:if="${param.deleteOtherDetails}" class="alert alert-success" role="alert">
                                     Successfully deleted other details
                                 </div>
-
 
                                 <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Personal Details</h6>
                                 <div class="row">

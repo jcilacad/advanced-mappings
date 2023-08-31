@@ -1,8 +1,11 @@
 package com.ilacad.AdvancedMappings.service;
 
+import com.ilacad.AdvancedMappings.dto.CourseDto;
 import com.ilacad.AdvancedMappings.dto.InstructorDto;
+import com.ilacad.AdvancedMappings.entity.Course;
 import com.ilacad.AdvancedMappings.entity.Instructor;
 import com.ilacad.AdvancedMappings.entity.InstructorDetail;
+import com.ilacad.AdvancedMappings.repository.CourseRepository;
 import com.ilacad.AdvancedMappings.repository.InstructorDetailRepository;
 import com.ilacad.AdvancedMappings.repository.InstructorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +20,13 @@ public class InstructorServiceImpl implements InstructorService {
     InstructorRepository instructorRepository;
     InstructorDetailRepository instructorDetailRepository;
 
+    CourseRepository courseRepository;
+
     @Autowired
-    public InstructorServiceImpl(InstructorRepository instructorRepository, InstructorDetailRepository instructorDetailRepository) {
+    public InstructorServiceImpl(InstructorRepository instructorRepository, InstructorDetailRepository instructorDetailRepository, CourseRepository courseRepository) {
         this.instructorRepository = instructorRepository;
         this.instructorDetailRepository = instructorDetailRepository;
+        this.courseRepository = courseRepository;
     }
 
     @Override
@@ -110,7 +116,14 @@ public class InstructorServiceImpl implements InstructorService {
 
     @Override
     public void deleteInstructorById(Long id) {
+
+        Course course = courseRepository.findByInstructor_Id(id);
+
+        course.setInstructor(null);
+
+        courseRepository.save(course);
         instructorRepository.deleteById(id);
+
     }
 
     @Override
@@ -121,5 +134,21 @@ public class InstructorServiceImpl implements InstructorService {
 
         instructorRepository.save(instructor);
         instructorDetailRepository.deleteById(id);
+    }
+
+    @Override
+    public void addCourse(Long id, CourseDto courseDto) {
+
+        // Get the instructor
+        Instructor instructor = findInstructorById(id);
+
+        // Create an instance of course
+        Course course = new Course(courseDto.getCourseName());
+
+        instructor.addCourse(course);
+
+        // Save it to database
+        instructorRepository.save(instructor);
+
     }
 }

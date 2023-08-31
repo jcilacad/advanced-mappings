@@ -1,6 +1,8 @@
 package com.ilacad.AdvancedMappings.service;
 
+import com.ilacad.AdvancedMappings.dto.CourseDto;
 import com.ilacad.AdvancedMappings.dto.InstructorDto;
+import com.ilacad.AdvancedMappings.entity.Course;
 import com.ilacad.AdvancedMappings.entity.Instructor;
 
 import java.util.List;
@@ -22,4 +24,6 @@ public interface InstructorService {
     void deleteInstructorById(Long id);
 
     void deleteOtherDetailsById(Long id);
+
+    void addCourse(Long id, CourseDto courseDto);
 }

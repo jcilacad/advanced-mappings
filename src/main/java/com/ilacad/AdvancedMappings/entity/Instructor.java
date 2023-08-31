@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -36,12 +37,19 @@ public class Instructor {
 
     @OneToMany(mappedBy = "instructor",
             cascade = {CascadeType.PERSIST, CascadeType.MERGE,
-                       CascadeType.REFRESH, CascadeType.DETACH})
+                       CascadeType.REFRESH, CascadeType.DETACH},
+            fetch = FetchType.EAGER)
     private List<Course> courses;
 
     public Instructor(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+    }
+
+    public void addCourse (Course course) {
+        course.setInstructor(this);
+        courses.add(course);
+
     }
 }
