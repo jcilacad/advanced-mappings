@@ -159,7 +159,7 @@ public class InstructorController {
 
         instructorService.deleteCourseById(courseId);
 
-        return "redirect:/instructor/details?id=" + instructorId;
+        return "redirect:/instructor/details?id=" + instructorId + "&successDeleteCourse";
     }
 
 

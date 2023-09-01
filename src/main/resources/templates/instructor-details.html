@@ -367,6 +367,10 @@
                                     Successfully Added a Course
                                 </div>
 
+                                <div th:if="${param.successDeleteCourse}" class="alert alert-success" role="alert">
+                                    Successfully Deleted a Course
+                                </div>
+
                                 <div th:if="${param.emptyField}" class="alert alert-danger" role="alert">
                                     The field must not be empty
                                 </div>
@@ -418,9 +422,10 @@
                                         <li class="list-inline-item">
 
 
-                                            <form th:action="@{/delete-course/instructor-id/{instructorId}/course-id/{courseId}(instructorId=${instructor.getId()}, courseId=${courseName.getId()})}" method="POST">
+                                            <form th:action="@{/delete-course/instructor-id/{instructorId}/course-id/{courseId}(instructorId=${instructor.getId()}, courseId=${courseName.getId()})}"
+                                                  method="POST">
                                                 <button class="btn btn-danger btn-sm rounded-0" type="submit"
-                                                   data-toggle="tooltip" data-placement="top" title="Delete"><i
+                                                        data-toggle="tooltip" data-placement="top" title="Delete"><i
                                                         class="fa fa-trash"></i></button>
                                             </form>
                                     </div>
