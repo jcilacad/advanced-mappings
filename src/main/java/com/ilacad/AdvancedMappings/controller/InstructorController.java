@@ -60,11 +60,12 @@ public class InstructorController {
 
 
     @GetMapping("/list")
-    public String instructorList(Model model) {
+    public String instructorList(Model model, EmailDto emailDto) {
 
         List<Instructor> instructorList = instructorService.getAllInstructors();
 
-        model.addAttribute("email", new EmailDto());
+        EmailDto finEmailDto = emailDto == null ? new EmailDto() : emailDto;
+        model.addAttribute("email", finEmailDto);
         model.addAttribute("instructorList", instructorList);
         return "instructor-list";
     }
@@ -73,11 +74,7 @@ public class InstructorController {
     public String searchInstructor(@Valid @ModelAttribute(name = "email") EmailDto emailDto, BindingResult result, Model model) {
 
         if (result.hasErrors()) {
-            List<Instructor> instructorList = instructorService.getAllInstructors();
-
-            model.addAttribute("email", emailDto);
-            model.addAttribute("instructorList", instructorList);
-            return "instructor-list";
+            return instructorList(model, emailDto);
         }
 
         String email = emailDto.getEmail();
