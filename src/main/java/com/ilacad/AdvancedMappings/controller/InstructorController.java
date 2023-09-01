@@ -104,6 +104,7 @@ public class InstructorController {
 
         model.addAttribute("updatedDetails", new InstructorDto());
         model.addAttribute("course", new CourseDto());
+        model.addAttribute("updateCourseDto", new CourseDto());
         model.addAttribute("youtubeChannel", youtubeChannel);
         model.addAttribute("hobby", hobby);
         model.addAttribute("instructor", instructorDetails);
@@ -160,6 +161,22 @@ public class InstructorController {
         instructorService.deleteCourseById(courseId);
 
         return "redirect:/instructor/details?id=" + instructorId + "&successDeleteCourse";
+    }
+
+    @PostMapping("/update-course")
+    public String updateCourse(@Valid @ModelAttribute(name = "updateCourseDto") CourseDto courseDto,
+                               @RequestParam("instructorId") Long instructorId,
+                               @RequestParam("courseId") Long courseId,
+                               BindingResult result) {
+
+        if (result.hasErrors()) {
+            return "redirect:/instructor/details?id=" + instructorId + "&emptyField";
+        }
+
+        instructorService.updateCourse(courseId, courseDto);
+
+        return "redirect:/instructor/details?id=" + instructorId + "&updateCourse";
+
     }
 
 

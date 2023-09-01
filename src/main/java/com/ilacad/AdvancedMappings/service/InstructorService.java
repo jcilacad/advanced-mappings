@@ -30,4 +30,6 @@ public interface InstructorService {
     Course findCourseById(Long courseId);
 
     void deleteCourseById(Long id);
+
+    void updateCourse(Long courseId, CourseDto courseDto);
 }

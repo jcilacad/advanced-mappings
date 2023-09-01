@@ -185,4 +185,16 @@ public class InstructorServiceImpl implements InstructorService {
 
         courseRepository.deleteById(id);
     }
+
+    @Override
+    public void updateCourse(Long courseId, CourseDto courseDto) {
+
+        Course course = findCourseById(courseId);
+
+        String newTitle = courseDto.getCourseName();
+
+        course.setTitle(newTitle);
+
+        courseRepository.save(course);
+    }
 }

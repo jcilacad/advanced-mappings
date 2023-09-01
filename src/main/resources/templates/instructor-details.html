@@ -363,6 +363,10 @@
                                     Successfully Updated an Instructor Details
                                 </div>
 
+                                <div th:if="${param.updateCourse}" class="alert alert-success" role="alert">
+                                    Successfully Updated a Course
+                                </div>
+
                                 <div th:if="${param.addCourse}" class="alert alert-success" role="alert">
                                     Successfully Added a Course
                                 </div>
@@ -415,9 +419,55 @@
                                     <div class="col-sm-6" th:each="courseName : ${instructor.getCourses()}">
                                         <p class="m-b-10 f-w-600">Course</p>
                                         <h6 th:text="${courseName.getTitle()}" class="text-muted f-w-400"></h6>
-                                        <a class="btn btn-success btn-sm rounded-0" type="button"
-                                           data-toggle="tooltip" data-placement="top" title="Edit"><i
-                                                class="fa fa-edit"></i></a>
+
+                                        <button class="btn btn-success btn-sm rounded-0"
+                                                data-bs-toggle="modal"
+                                                th:data-bs-target="'#deleteCourse-' + ${courseName.getId()}"
+                                                data-bs-whatever="@getbootstrap"
+                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                class="fa fa-edit"></i>
+                                        </button>
+
+                                        <div class="modal fade" th:id="'deleteCourse-' + ${courseName.getId()}" tabindex="-1"
+                                             aria-labelledby="updateModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-fullscreen-md-down">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="deleteModalLabel"
+                                                            style="color: black">
+                                                            Update Course Name</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                    </div>
+                                                    <form th:action="@{'/instructor/update-course?instructorId=' + ${instructor.getId()} +
+                                                                       '&courseId=' + ${courseName.getId()}}"
+                                                          th:object="${updateCourseDto}"
+                                                          method="POST">
+                                                        <div class="modal-body">
+
+                                                            <div class="tab mt-5">
+                                                                <p>
+                                                                    <input placeholder="Course Name"
+                                                                           th:value="${courseName.title}"
+                                                                           name="courseName"
+                                                                           id="courseName">
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">
+                                                                Close
+                                                            </button>
+                                                            <button type="submit" class="btn btn-primary">Update
+                                                            </button>
+                                                        </div>
+
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         </li>
                                         <li class="list-inline-item">
 
