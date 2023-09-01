@@ -35,10 +35,12 @@ public class Instructor {
     @JoinColumn(name = "instructor_detail_id", referencedColumnName = "id")
     private InstructorDetail instructorDetail;
 
-    @OneToMany(mappedBy = "instructor",
+    @OneToMany(
+            fetch = FetchType.EAGER,
+            mappedBy = "instructor",
             cascade = {CascadeType.PERSIST, CascadeType.MERGE,
-                       CascadeType.REFRESH, CascadeType.DETACH},
-            fetch = FetchType.EAGER)
+                       CascadeType.REFRESH, CascadeType.DETACH}
+            )
     private List<Course> courses;
 
     public Instructor(String firstName, String lastName, String email) {
