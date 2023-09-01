@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class InstructorServiceImpl implements InstructorService {
@@ -116,11 +117,13 @@ public class InstructorServiceImpl implements InstructorService {
     @Override
     public void deleteInstructorById(Long id) {
 
-        Course course = courseRepository.findByInstructor_Id(id);
+        List<Course> courses = courseRepository.findByInstructor_Id(id);
 
-        if (course != null) {
-            course.setInstructor(null);
-            courseRepository.save(course);
+        if (!courses.isEmpty()) {
+            for (Course course : courses) {
+                course.setInstructor(null);
+            }
+            courseRepository.saveAllAndFlush(courses);
         }
 
         instructorRepository.deleteById(id);
