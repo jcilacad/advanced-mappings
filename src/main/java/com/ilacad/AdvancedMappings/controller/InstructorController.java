@@ -152,4 +152,15 @@ public class InstructorController {
         return "redirect:/details?id=" + id + "&addCourse";
     }
 
+
+    @PostMapping("/delete-course/instructor-id/{instructorId}/course-id/{courseId}")
+    public String deleteCourse(@PathVariable(name = "instructorId") Long instructorId,
+                               @PathVariable(name = "courseId") Long courseId) {
+
+        instructorService.deleteCourseById(courseId);
+
+        return "redirect:/instructor/details?id=" + instructorId;
+    }
+
+
 }

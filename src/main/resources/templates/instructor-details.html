@@ -412,15 +412,17 @@
                                         <p class="m-b-10 f-w-600">Course</p>
                                         <h6 th:text="${courseName.getTitle()}" class="text-muted f-w-400"></h6>
                                         <a class="btn btn-success btn-sm rounded-0" type="button"
-                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                           data-toggle="tooltip" data-placement="top" title="Edit"><i
                                                 class="fa fa-edit"></i></a>
                                         </li>
                                         <li class="list-inline-item">
 
 
-                                            <a class="btn btn-danger btn-sm rounded-0" type="button"
-                                                    data-toggle="tooltip" data-placement="top" title="Delete"><i
-                                                    class="fa fa-trash"></i></a>
+                                            <form th:action="@{/delete-course/instructor-id/{instructorId}/course-id/{courseId}(instructorId=${instructor.getId()}, courseId=${courseName.getId()})}" method="POST">
+                                                <button class="btn btn-danger btn-sm rounded-0" type="submit"
+                                                   data-toggle="tooltip" data-placement="top" title="Delete"><i
+                                                        class="fa fa-trash"></i></button>
+                                            </form>
                                     </div>
 
                                 </div>

@@ -26,4 +26,8 @@ public interface InstructorService {
     void deleteOtherDetailsById(Long id);
 
     void addCourse(Long id, CourseDto courseDto);
+
+    Course findCourseById(Long courseId);
+
+    void deleteCourseById(Long id);
 }

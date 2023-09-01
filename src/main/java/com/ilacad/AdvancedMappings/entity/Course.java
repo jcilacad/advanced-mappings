@@ -21,12 +21,12 @@ public class Course {
     private String title;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
-                          CascadeType.REFRESH, CascadeType.DETACH}
-                )
+            CascadeType.REFRESH, CascadeType.DETACH},
+            fetch = FetchType.EAGER)
     @JoinColumn(name = "instructor_id", referencedColumnName = "id")
     private Instructor instructor;
 
-    public Course (String title) {
+    public Course(String title) {
         this.title = title;
     }
 }

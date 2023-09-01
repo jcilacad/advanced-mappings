@@ -155,4 +155,34 @@ public class InstructorServiceImpl implements InstructorService {
         instructorRepository.save(instructor);
 
     }
+
+    @Override
+    public Course findCourseById(Long courseId) {
+
+        Optional<Course> result = courseRepository.findById(courseId);
+        Course course;
+
+        if (result.isPresent()) {
+            course = result.get();
+        } else {
+            throw new RuntimeException("Did not find course id - " + courseId);
+        }
+
+        return course;
+    }
+
+
+    @Override
+    public void deleteCourseById(Long id) {
+
+        Course course = findCourseById(id);
+
+        // Make the foreign key as null, before deleting the course
+        course.setInstructor(null);
+
+        // Save the modified course
+        courseRepository.save(course);
+
+        courseRepository.deleteById(id);
+    }
 }

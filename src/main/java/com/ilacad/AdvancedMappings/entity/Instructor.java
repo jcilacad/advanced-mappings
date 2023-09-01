@@ -51,4 +51,9 @@ public class Instructor {
         course.setInstructor(this);
         courses.add(course);
     }
+
+    public void deleteCourse (Course course) {
+        course.setInstructor(null);
+        courses.remove(course);
+    }
 }
