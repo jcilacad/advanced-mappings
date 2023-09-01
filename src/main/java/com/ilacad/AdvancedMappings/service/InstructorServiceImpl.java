@@ -117,7 +117,8 @@ public class InstructorServiceImpl implements InstructorService {
     @Override
     public void deleteInstructorById(Long id) {
 
-        List<Course> courses = courseRepository.findByInstructor_Id(id);
+        Instructor instructor = findInstructorById(id);
+        List<Course> courses = instructor.getCourses();
 
         if (!courses.isEmpty()) {
             for (Course course : courses) {
