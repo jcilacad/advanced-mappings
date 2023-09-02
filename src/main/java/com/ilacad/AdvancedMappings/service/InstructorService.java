@@ -32,4 +32,6 @@ public interface InstructorService {
     void deleteCourseById(Long id);
 
     void updateCourse(Long courseId, CourseDto courseDto);
+
+    void addReview(Long instructorId, Long courseId) ;
 }

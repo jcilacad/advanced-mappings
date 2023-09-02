@@ -188,6 +188,8 @@ public class InstructorController {
             return "redirect:/details?id=" + instructorId + "&emptyField";
         }
 
+        instructorService.addReview(instructorId, courseId);
+
         return "redirect:/instructor/details?id=" + instructorId + "&addReview";
 
     }

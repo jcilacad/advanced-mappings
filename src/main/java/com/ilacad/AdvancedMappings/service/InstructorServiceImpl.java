@@ -200,4 +200,9 @@ public class InstructorServiceImpl implements InstructorService {
 
         courseRepository.save(course);
     }
+
+    @Override
+    public void addReview(Long instructorId, Long courseId) {
+        
+    }
 }
