@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ReviewDto {
 
-    @NotEmpty(message = "The comment must not be empty")
+    @NotEmpty
     private String comment;
 
 }

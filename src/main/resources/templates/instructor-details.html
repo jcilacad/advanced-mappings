@@ -375,6 +375,10 @@
                                     Successfully Deleted a Course
                                 </div>
 
+                                <div th:if="${param.addReview}" class="alert alert-success" role="alert">
+                                    Successfully Added a Review
+                                </div>
+
                                 <div th:if="${param.emptyField}" class="alert alert-danger" role="alert">
                                     The field must not be empty
                                 </div>
@@ -428,7 +432,8 @@
                                                 class="fa fa-edit"></i>
                                         </button>
 
-                                        <div class="modal fade" th:id="'updateCourse-' + ${courseName.getId()}" tabindex="-1"
+                                        <div class="modal fade" th:id="'updateCourse-' + ${courseName.getId()}"
+                                             tabindex="-1"
                                              aria-labelledby="updateModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-fullscreen-md-down">
                                                 <div class="modal-content">
@@ -483,18 +488,19 @@
                                         </li>
                                         <li class="list-inline-item">
 
-<!--                                            Add Review-->
+                                            <!--                                            Add Review-->
 
 
                                             <button class="btn btn-warning btn-sm rounded-0"
                                                     data-bs-toggle="modal"
-                                                    th:data-bs-target="'#reviewCourse-' + ${courseName.getId()}"
+                                                    th:data-bs-target="'#addReview-' + ${courseName.getId()}"
                                                     data-bs-whatever="@getbootstrap"
-                                                    data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                    data-toggle="tooltip" data-placement="top" title="Add Review"><i
                                                     class="fa fa-book"></i>
                                             </button>
 
-                                            <div class="modal fade" th:id="'reviewCourse-' + ${courseName.getId()}" tabindex="-1"
+                                            <div class="modal fade" th:id="'addReview-' + ${courseName.getId()}"
+                                                 tabindex="-1"
                                                  aria-labelledby="updateModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-fullscreen-md-down">
                                                     <div class="modal-content">
@@ -502,7 +508,8 @@
                                                             <h1 class="modal-title fs-5" id="reviewCourse"
                                                                 style="color: black">
                                                                 Add a review for [[${courseName.title}]]</h1>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal"
                                                                     aria-label="Close"></button>
                                                         </div>
                                                         <form th:action="@{'/instructor/add-review?instructorId=' + ${instructor.getId()} +
@@ -513,7 +520,7 @@
 
                                                                 <div class="tab mt-5">
                                                                     <p>
-                                                                        <input placeholder="Course Name"
+                                                                        <input placeholder="Type your comment"
                                                                                th:field="*{comment}">
                                                                     </p>
                                                                 </div>
@@ -532,7 +539,62 @@
                                                 </div>
                                             </div>
 
-<!--                                        end of add review-->
+                                        </li>
+                                        <!--                                        end of add review-->
+
+
+                                        <!--                                        Start of View Reviews-->
+
+                                        <li class="list-inline-item">
+
+
+                                            <button class="btn btn-primary btn-sm rounded-0"
+                                                    data-bs-toggle="modal"
+                                                    th:data-bs-target="'#reviewCourse-' + ${courseName.getId()}"
+                                                    data-bs-whatever="@getbootstrap"
+                                                    data-toggle="tooltip" data-placement="top" title="Add Review"><i
+                                                    class="fa fa-eye"></i>
+                                            </button>
+
+                                            <div class="modal fade" th:id="'reviewCourse-' + ${courseName.getId()}"
+                                                 tabindex="-1"
+                                                 aria-labelledby="viewReviewsLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-fullscreen-md-down">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="viewReviews"
+                                                                style="color: black">
+                                                                Reviews for [[${courseName.title}]]</h1>
+                                                            <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                        </div>
+
+                                                        <div class="modal-body">
+
+                                                            <div class="tab mt-5">
+
+                                                                <ul th:each="review : ${courseName.reviews}">
+                                                                    <li th:text="${review.getComment()}"></li>
+                                                                </ul>
+
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">
+                                                                Close
+                                                            </button>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!--                                        view reviews-->
+                                        </li>
 
                                     </div>
 

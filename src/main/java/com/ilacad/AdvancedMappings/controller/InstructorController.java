@@ -182,10 +182,11 @@ public class InstructorController {
     @PostMapping("/add-review")
     public String addReview (@Valid @ModelAttribute("reviewDto") ReviewDto reviewDto,
                              @RequestParam(name = "instructorId") Long instructorId,
-                             @RequestParam(name = "courseId") Long courseId, BindingResult result) {
+                             @RequestParam(name = "courseId") Long courseId,
+                             BindingResult result) {
 
         if (result.hasErrors()) {
-            return "redirect:/details?id=" + instructorId + "&emptyField";
+            return "redirect:/instructor/details?id=" + instructorId + "&emptyField";
         }
 
         instructorService.addReview(instructorId, courseId, reviewDto);

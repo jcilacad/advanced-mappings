@@ -175,8 +175,8 @@ public class InstructorServiceImpl implements InstructorService {
         Course course;
 
         if (result.isPresent()) {
-            course = result.get();
             List<Review> reviews = reviewRepository.findByCourse_Id(courseId);
+            course = result.get();
 
             course.setReviews(reviews);
 
