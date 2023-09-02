@@ -195,5 +195,18 @@ public class InstructorController {
 
     }
 
+    @GetMapping("/view-reviews/course-id/{courseId}/instructor-id/{instructorId}")
+    public String viewReviews(@PathVariable(name = "courseId") Long courseId,
+                              @PathVariable(name = "instructorId") Long instructorId,
+                              Model model) {
+
+
+        model.addAttribute("instructorId", instructorId);
+
+
+
+        return "view-reviews";
+    }
+
 
 }

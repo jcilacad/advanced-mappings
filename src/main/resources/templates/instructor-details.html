@@ -548,13 +548,13 @@
                                         <li class="list-inline-item">
 
 
-                                            <a class="btn btn-primary btn-sm rounded-0"
-                                               th:href="@{/instructor/view-reviews}"
-                                                    class="fa fa-eye"></i>
-                                            </a>
+                                            <form th:action="@{/view-reviews/course-id/{courseId}/instructor-id/{instructorId} (courseId=${courseName.getId()}, instructorId=${instructor.getId()})}"
+                                                  method="GET">
+                                                <button class="btn btn-primary btn-sm rounded-0" type="submit"
+                                                        data-toggle="tooltip" data-placement="top" title="View Reviews"><i
+                                                        class="fa fa-eye"></i></button>
+                                            </form>
 
-
-                                            <!--                                        view reviews-->
                                         </li>
 
                                     </div>
