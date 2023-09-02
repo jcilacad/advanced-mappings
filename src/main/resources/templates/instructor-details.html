@@ -422,13 +422,13 @@
 
                                         <button class="btn btn-success btn-sm rounded-0"
                                                 data-bs-toggle="modal"
-                                                th:data-bs-target="'#deleteCourse-' + ${courseName.getId()}"
+                                                th:data-bs-target="'#updateCourse-' + ${courseName.getId()}"
                                                 data-bs-whatever="@getbootstrap"
                                                 data-toggle="tooltip" data-placement="top" title="Edit"><i
                                                 class="fa fa-edit"></i>
                                         </button>
 
-                                        <div class="modal fade" th:id="'deleteCourse-' + ${courseName.getId()}" tabindex="-1"
+                                        <div class="modal fade" th:id="'updateCourse-' + ${courseName.getId()}" tabindex="-1"
                                              aria-labelledby="updateModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-fullscreen-md-down">
                                                 <div class="modal-content">
@@ -478,6 +478,64 @@
                                                         data-toggle="tooltip" data-placement="top" title="Delete"><i
                                                         class="fa fa-trash"></i></button>
                                             </form>
+
+
+                                        </li>
+                                        <li class="list-inline-item">
+
+<!--                                            Add Review-->
+
+
+                                            <button class="btn btn-warning btn-sm rounded-0"
+                                                    data-bs-toggle="modal"
+                                                    th:data-bs-target="'#reviewCourse-' + ${courseName.getId()}"
+                                                    data-bs-whatever="@getbootstrap"
+                                                    data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                    class="fa fa-book"></i>
+                                            </button>
+
+                                            <div class="modal fade" th:id="'reviewCourse-' + ${courseName.getId()}" tabindex="-1"
+                                                 aria-labelledby="updateModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-fullscreen-md-down">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="reviewCourse"
+                                                                style="color: black">
+                                                                Update Course Name</h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                        </div>
+                                                        <form th:action="@{'/instructor/update-course?instructorId=' + ${instructor.getId()} +
+                                                                       '&courseId=' + ${courseName.getId()}}"
+                                                              th:object="${updateCourseDto}"
+                                                              method="POST">
+                                                            <div class="modal-body">
+
+                                                                <div class="tab mt-5">
+                                                                    <p>
+                                                                        <input placeholder="Course Name"
+                                                                               th:value="${courseName.title}"
+                                                                               name="comment"
+                                                                               id="comment">
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">
+                                                                    Close
+                                                                </button>
+                                                                <button type="submit" class="btn btn-primary">Update
+                                                                </button>
+                                                            </div>
+
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+<!--                                        end of add review-->
+
                                     </div>
 
                                 </div>
