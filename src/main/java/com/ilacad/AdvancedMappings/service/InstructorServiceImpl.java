@@ -10,12 +10,12 @@ import com.ilacad.AdvancedMappings.entity.Review;
 import com.ilacad.AdvancedMappings.repository.CourseRepository;
 import com.ilacad.AdvancedMappings.repository.InstructorDetailRepository;
 import com.ilacad.AdvancedMappings.repository.InstructorRepository;
+import com.ilacad.AdvancedMappings.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class InstructorServiceImpl implements InstructorService {
@@ -24,11 +24,18 @@ public class InstructorServiceImpl implements InstructorService {
     InstructorDetailRepository instructorDetailRepository;
     CourseRepository courseRepository;
 
+    ReviewRepository reviewRepository;
+
     @Autowired
-    public InstructorServiceImpl(InstructorRepository instructorRepository, InstructorDetailRepository instructorDetailRepository, CourseRepository courseRepository) {
+    public InstructorServiceImpl(InstructorRepository instructorRepository,
+                                 InstructorDetailRepository instructorDetailRepository,
+                                 CourseRepository courseRepository,
+                                 ReviewRepository reviewRepository) {
+
         this.instructorRepository = instructorRepository;
         this.instructorDetailRepository = instructorDetailRepository;
         this.courseRepository = courseRepository;
+        this.reviewRepository = reviewRepository;
     }
 
     @Override
@@ -169,6 +176,10 @@ public class InstructorServiceImpl implements InstructorService {
 
         if (result.isPresent()) {
             course = result.get();
+            List<Review> reviews = reviewRepository.findByCourse_Id(courseId);
+
+            course.setReviews(reviews);
+
         } else {
             throw new RuntimeException("Did not find course id - " + courseId);
         }
