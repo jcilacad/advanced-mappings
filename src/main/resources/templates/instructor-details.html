@@ -501,22 +501,20 @@
                                                         <div class="modal-header">
                                                             <h1 class="modal-title fs-5" id="reviewCourse"
                                                                 style="color: black">
-                                                                Update Course Name</h1>
+                                                                Add a review for [[${courseName.title}]]</h1>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                     aria-label="Close"></button>
                                                         </div>
                                                         <form th:action="@{'/instructor/add-review?instructorId=' + ${instructor.getId()} +
                                                                        '&courseId=' + ${courseName.getId()}}"
-                                                              th:object="${addReview}"
+                                                              th:object="${reviewDto}"
                                                               method="POST">
                                                             <div class="modal-body">
 
                                                                 <div class="tab mt-5">
                                                                     <p>
                                                                         <input placeholder="Course Name"
-                                                                               th:value="${courseName.title}"
-                                                                               name="comment"
-                                                                               id="comment">
+                                                                               th:field="*{comment}">
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -525,7 +523,7 @@
                                                                         data-bs-dismiss="modal">
                                                                     Close
                                                                 </button>
-                                                                <button type="submit" class="btn btn-primary">Update
+                                                                <button type="submit" class="btn btn-primary">Add
                                                                 </button>
                                                             </div>
 

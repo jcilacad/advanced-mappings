@@ -3,6 +3,7 @@ package com.ilacad.AdvancedMappings.controller;
 import com.ilacad.AdvancedMappings.dto.CourseDto;
 import com.ilacad.AdvancedMappings.dto.EmailDto;
 import com.ilacad.AdvancedMappings.dto.InstructorDto;
+import com.ilacad.AdvancedMappings.dto.ReviewDto;
 import com.ilacad.AdvancedMappings.entity.Course;
 import com.ilacad.AdvancedMappings.entity.Instructor;
 import com.ilacad.AdvancedMappings.service.InstructorService;
@@ -102,6 +103,7 @@ public class InstructorController {
 
         model.addAttribute("updatedDetails", new InstructorDto());
         model.addAttribute("course", new CourseDto());
+        model.addAttribute("reviewDto", new ReviewDto());
         model.addAttribute("updateCourseDto", new CourseDto());
         model.addAttribute("youtubeChannel", youtubeChannel);
         model.addAttribute("hobby", hobby);
@@ -178,9 +180,13 @@ public class InstructorController {
     }
 
     @PostMapping("/add-review")
-    public String addReview (@RequestParam(name = "instructorId") Long instructorId, @RequestParam(name = "courseId") Long id) {
+    public String addReview (@Valid @ModelAttribute("reviewDto") ReviewDto reviewDto,
+                             @RequestParam(name = "instructorId") Long instructorId,
+                             @RequestParam(name = "courseId") Long courseId, BindingResult result) {
 
-
+        if (result.hasErrors()) {
+            return "redirect:/details?id=" + instructorId + "&emptyField";
+        }
 
         return "redirect:/instructor/details?id=" + instructorId + "&addReview";
 
