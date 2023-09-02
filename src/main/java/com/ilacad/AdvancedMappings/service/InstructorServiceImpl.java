@@ -125,14 +125,11 @@ public class InstructorServiceImpl implements InstructorService {
         Instructor instructor = findInstructorById(id);
         List<Course> courses = instructor.getCourses();
 
-        if (!courses.isEmpty()) {
-            for (Course course : courses) {
-                course.setInstructor(null);
-            }
-            courseRepository.saveAllAndFlush(courses);
+        for (Course course : courses) {
+            course.setInstructor(null);
         }
 
-        instructorRepository.deleteById(id);
+        instructorRepository.delete(instructor);
 
     }
 
