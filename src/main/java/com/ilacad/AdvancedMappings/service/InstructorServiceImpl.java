@@ -2,6 +2,7 @@ package com.ilacad.AdvancedMappings.service;
 
 import com.ilacad.AdvancedMappings.dto.CourseDto;
 import com.ilacad.AdvancedMappings.dto.InstructorDto;
+import com.ilacad.AdvancedMappings.dto.ReviewDto;
 import com.ilacad.AdvancedMappings.entity.Course;
 import com.ilacad.AdvancedMappings.entity.Instructor;
 import com.ilacad.AdvancedMappings.entity.InstructorDetail;
@@ -202,8 +203,13 @@ public class InstructorServiceImpl implements InstructorService {
     }
 
     @Override
-    public void addReview(Long instructorId, Long courseId) {
+    public void addReview(Long instructorId, Long courseId, ReviewDto reviewDto) {
 
+        // Find the course by id
+        Course course = findCourseById(courseId);
+
+        // Add a review
+        
 
 
     }

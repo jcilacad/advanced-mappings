@@ -2,6 +2,7 @@ package com.ilacad.AdvancedMappings.service;
 
 import com.ilacad.AdvancedMappings.dto.CourseDto;
 import com.ilacad.AdvancedMappings.dto.InstructorDto;
+import com.ilacad.AdvancedMappings.dto.ReviewDto;
 import com.ilacad.AdvancedMappings.entity.Course;
 import com.ilacad.AdvancedMappings.entity.Instructor;
 
@@ -33,5 +34,5 @@ public interface InstructorService {
 
     void updateCourse(Long courseId, CourseDto courseDto);
 
-    void addReview(Long instructorId, Long courseId) ;
+    void addReview(Long instructorId, Long courseId, ReviewDto reviewDto) ;
 }
