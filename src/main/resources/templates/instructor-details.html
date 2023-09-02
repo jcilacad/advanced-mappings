@@ -548,50 +548,11 @@
                                         <li class="list-inline-item">
 
 
-                                            <button class="btn btn-primary btn-sm rounded-0"
-                                                    data-bs-toggle="modal"
-                                                    th:data-bs-target="'#reviewCourse-' + ${courseName.getId()}"
-                                                    data-bs-whatever="@getbootstrap"
-                                                    data-toggle="tooltip" data-placement="top" title="Add Review"><i
+                                            <a class="btn btn-primary btn-sm rounded-0"
+                                               th:href="@{/instructor/view-reviews}"
                                                     class="fa fa-eye"></i>
-                                            </button>
+                                            </a>
 
-                                            <div class="modal fade" th:id="'reviewCourse-' + ${courseName.getId()}"
-                                                 tabindex="-1"
-                                                 aria-labelledby="viewReviewsLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-fullscreen-md-down">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="viewReviews"
-                                                                style="color: black">
-                                                                Reviews for [[${courseName.title}]]</h1>
-                                                            <button type="button" class="btn-close"
-                                                                    data-bs-dismiss="modal"
-                                                                    aria-label="Close"></button>
-                                                        </div>
-
-                                                        <div class="modal-body">
-
-                                                            <div class="tab mt-5">
-
-                                                                <ul th:each="review : ${courseName.reviews}">
-                                                                    <li th:text="${review.getComment()}"></li>
-                                                                </ul>
-
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                    data-bs-dismiss="modal">
-                                                                Close
-                                                            </button>
-                                                        </div>
-
-
-                                                    </div>
-                                                </div>
-                                            </div>
 
                                             <!--                                        view reviews-->
                                         </li>
