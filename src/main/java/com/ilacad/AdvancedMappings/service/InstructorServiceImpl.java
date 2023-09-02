@@ -105,7 +105,12 @@ public class InstructorServiceImpl implements InstructorService {
         Optional<Instructor> result = instructorRepository.findById(id);
 
         if (result.isPresent()) {
-            instructor = instructorRepository.findInstructorByIdJoinFetch(id);
+//            instructor = instructorRepository.findInstructorByIdJoinFetch(id);
+            List<Course> courses = courseRepository.findByInstructor_id(id);
+
+            instructor = result.get();
+            instructor.setCourses(courses);
+
         } else {
             throw new RuntimeException("Did not find id - " + id);
         }

@@ -90,13 +90,14 @@ public class InstructorController {
     @GetMapping("/details")
     public String instructorDetails(@RequestParam("id") Long id, Model model) {
 
-        Instructor instructorDetails = instructorService.findInstructorById(id);
+        Instructor instructor = instructorService.findInstructorById(id);
 
         String youtubeChannel = "N/A";
         String hobby = "N/A";
-        if (instructorDetails.getInstructorDetail() != null) {
-            youtubeChannel = instructorDetails.getInstructorDetail().getYoutubeChannel();
-            hobby = instructorDetails.getInstructorDetail().getHobby();
+
+        if (instructor.getInstructorDetail() != null) {
+            youtubeChannel = instructor.getInstructorDetail().getYoutubeChannel();
+            hobby = instructor.getInstructorDetail().getHobby();
         }
 
         model.addAttribute("updatedDetails", new InstructorDto());
@@ -104,7 +105,7 @@ public class InstructorController {
         model.addAttribute("updateCourseDto", new CourseDto());
         model.addAttribute("youtubeChannel", youtubeChannel);
         model.addAttribute("hobby", hobby);
-        model.addAttribute("instructor", instructorDetails);
+        model.addAttribute("instructor", instructor);
         return "instructor-details";
     }
 

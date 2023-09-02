@@ -17,7 +17,7 @@ public interface InstructorRepository extends JpaRepository<Instructor, Long> {
 
     @Query("SELECT i FROM Instructor i " +
             "JOIN FETCH i.courses " +
-            "JOIN FETCH i.instructorDetail " + 
+            "JOIN FETCH i.instructorDetail " +
             "WHERE i.id = :id")
     Instructor findInstructorByIdJoinFetch(@Param("id") Long id);
 }
