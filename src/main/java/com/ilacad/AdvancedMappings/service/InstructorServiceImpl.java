@@ -6,6 +6,7 @@ import com.ilacad.AdvancedMappings.dto.ReviewDto;
 import com.ilacad.AdvancedMappings.entity.Course;
 import com.ilacad.AdvancedMappings.entity.Instructor;
 import com.ilacad.AdvancedMappings.entity.InstructorDetail;
+import com.ilacad.AdvancedMappings.entity.Review;
 import com.ilacad.AdvancedMappings.repository.CourseRepository;
 import com.ilacad.AdvancedMappings.repository.InstructorDetailRepository;
 import com.ilacad.AdvancedMappings.repository.InstructorRepository;
@@ -209,8 +210,10 @@ public class InstructorServiceImpl implements InstructorService {
         Course course = findCourseById(courseId);
 
         // Add a review
-        
+        String comment = reviewDto.getComment();
+        Review newReview = new Review(comment);
+        course.addReview(newReview);
 
-
+        courseRepository.saveAndFlush(course);
     }
 }
