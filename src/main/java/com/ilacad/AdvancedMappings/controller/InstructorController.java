@@ -177,5 +177,14 @@ public class InstructorController {
 
     }
 
+    @PostMapping("/add-review")
+    public String addReview (@RequestParam(name = "instructorId") Long instructorId, @RequestParam(name = "courseId") Long id) {
+
+
+
+        return "redirect:/instructor/details?id=" + instructorId + "&addReview";
+
+    }
+
 
 }

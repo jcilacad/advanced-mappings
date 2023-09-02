@@ -505,9 +505,9 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                     aria-label="Close"></button>
                                                         </div>
-                                                        <form th:action="@{'/instructor/update-course?instructorId=' + ${instructor.getId()} +
+                                                        <form th:action="@{'/instructor/add-review?instructorId=' + ${instructor.getId()} +
                                                                        '&courseId=' + ${courseName.getId()}}"
-                                                              th:object="${updateCourseDto}"
+                                                              th:object="${addReview}"
                                                               method="POST">
                                                             <div class="modal-body">
 
