@@ -21,6 +21,12 @@ public class Review {
     @Column(name = "comment")
     private String comment;
 
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.PERSIST,
+                          CascadeType.MERGE, CascadeType.REFRESH},
+               fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id", referencedColumnName = "id")
+    private Course course;
+
     public Review(String comment) {
         this.comment = comment;
     }

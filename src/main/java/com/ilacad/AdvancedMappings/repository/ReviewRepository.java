@@ -2,6 +2,7 @@ package com.ilacad.AdvancedMappings.repository;
 
 import com.ilacad.AdvancedMappings.entity.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
