@@ -3,6 +3,8 @@ package com.ilacad.AdvancedMappings.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -25,6 +27,15 @@ public class Course {
             fetch = FetchType.LAZY)
     @JoinColumn(name = "instructor_id", referencedColumnName = "id")
     private Instructor instructor;
+
+    @OneToMany(cascade = CascadeType.ALL,
+               fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id")
+    private List<Review> reviews;
+
+    public void addReview (Review review) {
+        reviews.add(review);
+    }
 
     public Course(String title) {
         this.title = title;
