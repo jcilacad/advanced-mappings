@@ -39,4 +39,6 @@ public interface InstructorService {
 
     Course updateReview(ReviewDto reviewDto, Long reviewId);
 
+    Course deleteReview(Long reviewId);
+
 }

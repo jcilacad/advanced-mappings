@@ -267,6 +267,12 @@
                 Successfully Updated a Review
             </div>
         </div>
+
+        <div>
+            <div th:if="${param.deleteSuccess}" class="alert alert-success" role="alert">
+                Successfully Deleted a Review
+            </div>
+        </div>
     </div>
 
     <div class="d-flex justify-content-center py-2" th:each="review : ${reviews}">
@@ -327,7 +333,8 @@
                     <li class="list-inline-item">
 
 
-                        <form method="POST">
+                        <form method="POST"
+                              th:action="@{'/delete-review?reviewId=' + ${review.getId()}}">
                             <button class="btn btn-danger btn-sm rounded-0" type="submit"
                                     data-toggle="tooltip" data-placement="top" title="Delete"><i
                                     class="fa fa-trash"></i></button>

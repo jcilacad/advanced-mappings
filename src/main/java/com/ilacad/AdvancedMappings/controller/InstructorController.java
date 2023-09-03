@@ -224,5 +224,14 @@ public class InstructorController {
 
     }
 
+    @PostMapping("/delete-review")
+    public String deleteReview(@RequestParam("reviewId") Long reviewId) {
+
+        Course course = instructorService.deleteReview(reviewId);
+
+        return "redirect:/view-reviews/course-id/" + course.getId() + "?deleteSuccess";
+
+    }
+
 
 }

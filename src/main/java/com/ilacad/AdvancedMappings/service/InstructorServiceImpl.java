@@ -249,4 +249,26 @@ public class InstructorServiceImpl implements InstructorService {
         return review.getCourse();
 
     }
+
+    @Override
+    public Course deleteReview(Long reviewId) {
+
+        Optional<Review> result = reviewRepository.findById(reviewId);
+        Review review;
+
+        // Initialize course for return
+        Course course;
+
+        if (result.isPresent()) {
+            review = result.get();
+            course = review.getCourse();
+            review.setCourse(null);
+
+            reviewRepository.delete(review);
+        } else {
+            throw new RuntimeException("Did not find review id - " + reviewId);
+        }
+
+        return course;
+    }
 }
