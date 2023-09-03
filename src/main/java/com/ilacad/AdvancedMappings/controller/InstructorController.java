@@ -202,9 +202,11 @@ public class InstructorController {
                               Model model) {
 
         Course course = instructorService.findCourseById(courseId);
+        List<Review> reviews = course.getReviews();
 
         model.addAttribute("instructorId", instructorId);
         model.addAttribute("course", course);
+        model.addAttribute("reviews", reviews);
 
 
 

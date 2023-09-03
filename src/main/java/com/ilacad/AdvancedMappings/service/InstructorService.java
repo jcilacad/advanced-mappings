@@ -37,5 +37,4 @@ public interface InstructorService {
 
     void addReview(Long instructorId, Long courseId, ReviewDto reviewDto);
 
-    List<Review> findReviewsByCourseId(Long courseId);
 }
