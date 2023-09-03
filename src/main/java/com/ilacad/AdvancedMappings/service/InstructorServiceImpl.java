@@ -227,4 +227,9 @@ public class InstructorServiceImpl implements InstructorService {
 
         courseRepository.saveAndFlush(course);
     }
+
+    @Override
+    public List<Review> findReviewsByCourseId(Long courseId) {
+        return reviewRepository.findByCourse_Id(courseId);
+    }
 }

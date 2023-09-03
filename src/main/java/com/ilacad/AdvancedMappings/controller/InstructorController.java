@@ -6,6 +6,7 @@ import com.ilacad.AdvancedMappings.dto.InstructorDto;
 import com.ilacad.AdvancedMappings.dto.ReviewDto;
 import com.ilacad.AdvancedMappings.entity.Course;
 import com.ilacad.AdvancedMappings.entity.Instructor;
+import com.ilacad.AdvancedMappings.entity.Review;
 import com.ilacad.AdvancedMappings.service.InstructorService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

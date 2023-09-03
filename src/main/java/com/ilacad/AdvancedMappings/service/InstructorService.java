@@ -5,6 +5,7 @@ import com.ilacad.AdvancedMappings.dto.InstructorDto;
 import com.ilacad.AdvancedMappings.dto.ReviewDto;
 import com.ilacad.AdvancedMappings.entity.Course;
 import com.ilacad.AdvancedMappings.entity.Instructor;
+import com.ilacad.AdvancedMappings.entity.Review;
 
 import java.util.List;
 
@@ -34,5 +35,7 @@ public interface InstructorService {
 
     void updateCourse(Long courseId, CourseDto courseDto);
 
-    void addReview(Long instructorId, Long courseId, ReviewDto reviewDto) ;
+    void addReview(Long instructorId, Long courseId, ReviewDto reviewDto);
+
+    List<Review> findReviewsByCourseId(Long courseId);
 }
