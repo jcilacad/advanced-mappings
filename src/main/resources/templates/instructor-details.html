@@ -548,7 +548,7 @@
                                         <li class="list-inline-item">
 
 
-                                            <form th:action="@{/view-reviews/course-id/{courseId}/instructor-id/{instructorId} (courseId=${courseName.getId()}, instructorId=${instructor.getId()})}"
+                                            <form th:action="@{/view-reviews/course-id/{courseId}(courseId=${courseName.getId()})}"
                                                   method="GET">
                                                 <button class="btn btn-primary btn-sm rounded-0" type="submit"
                                                         data-toggle="tooltip" data-placement="top" title="View Reviews"><i

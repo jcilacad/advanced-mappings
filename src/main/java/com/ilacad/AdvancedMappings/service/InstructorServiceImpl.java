@@ -228,4 +228,25 @@ public class InstructorServiceImpl implements InstructorService {
         courseRepository.saveAndFlush(course);
     }
 
+    @Override
+    public Course updateReview(ReviewDto reviewDto, Long reviewId) {
+
+        Optional<Review> result = reviewRepository.findById(reviewId);
+        Review review;
+
+        if (result.isPresent()) {
+            String comment = reviewDto.getComment();
+
+            review = result.get();
+            review.setComment(comment);
+
+            reviewRepository.saveAndFlush(review);
+        } else {
+            throw new RuntimeException("Did not find review id - " + reviewId);
+        }
+
+        // Return course to redirect in reviews page
+        return review.getCourse();
+
+    }
 }

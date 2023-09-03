@@ -37,4 +37,6 @@ public interface InstructorService {
 
     void addReview(Long instructorId, Long courseId, ReviewDto reviewDto);
 
+    Course updateReview(ReviewDto reviewDto, Long reviewId);
+
 }

@@ -196,21 +196,32 @@ public class InstructorController {
 
     }
 
-    @GetMapping("/view-reviews/course-id/{courseId}/instructor-id/{instructorId}")
+    @GetMapping("/view-reviews/course-id/{courseId}")
     public String viewReviews(@PathVariable(name = "courseId") Long courseId,
-                              @PathVariable(name = "instructorId") Long instructorId,
                               Model model) {
 
         Course course = instructorService.findCourseById(courseId);
         List<Review> reviews = course.getReviews();
 
-        model.addAttribute("instructorId", instructorId);
+        model.addAttribute("instructorId", course.getInstructor().getId());
         model.addAttribute("course", course);
         model.addAttribute("reviews", reviews);
-
-
+        model.addAttribute("reviewDto", new ReviewDto());
 
         return "view-reviews";
+    }
+
+    @PostMapping("/update-review")
+    public String updateReview (@RequestParam("reviewId") Long reviewId,
+                                @ModelAttribute("updateReview") ReviewDto reviewDto) {
+
+        // update review
+        Course course = instructorService.updateReview(reviewDto, reviewId);
+
+        // Get course id for return
+        Long courseId = course.getId();
+        return "redirect:/view-reviews/course-id/" + courseId + "?updateSuccess";
+
     }
 
 
