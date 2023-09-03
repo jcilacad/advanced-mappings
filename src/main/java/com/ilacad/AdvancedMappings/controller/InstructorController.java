@@ -200,8 +200,10 @@ public class InstructorController {
                               @PathVariable(name = "instructorId") Long instructorId,
                               Model model) {
 
+        Course course = instructorService.findCourseById(courseId);
 
         model.addAttribute("instructorId", instructorId);
+        model.addAttribute("course", course);
 
 
 
