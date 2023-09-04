@@ -33,6 +33,14 @@ public class Course {
                fetch = FetchType.LAZY)
     private List<Review> reviews;
 
+    @ManyToMany(fetch = FetchType.LAZY,
+                cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+                           CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinTable(name = "course_student",
+               joinColumns = @JoinColumn(name = "course_id"),
+               inverseJoinColumns = @JoinColumn(name = "student_id"))
+    private List<Student> students;
+
     public void addReview (Review review) {
         review.setCourse(this);
         reviews.add(review);
