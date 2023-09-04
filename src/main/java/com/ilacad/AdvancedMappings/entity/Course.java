@@ -46,6 +46,10 @@ public class Course {
         reviews.add(review);
     }
 
+    public void addStudent (Student student) {
+        students.add(student);
+    }
+
     public Course(String title) {
         this.title = title;
     }
