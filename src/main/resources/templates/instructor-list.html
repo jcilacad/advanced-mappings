@@ -23,11 +23,18 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" th:href="@{/instructor}">Home</a>
                 </li>
+
+<!--                instructor-->
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/instructor/form}">Form (Instructor)</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" th:href="@{/instructor/list}">List (Instructor)</a>
+                </li>
+
+<!--                student-->
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/student/list}">List (Student)</a>
                 </li>
             </ul>
         </div>
@@ -102,7 +109,7 @@
                             <!-- Button trigger modal -->
                             <td>
                                 <a class="btn btn-primary"
-                                        th:href="@{'/instructor/details?id=' + ${instructor.getId()}}">
+                                   th:href="@{'/instructor/details?id=' + ${instructor.getId()}}">
                                     View Details
                                 </a>
                             </td>
