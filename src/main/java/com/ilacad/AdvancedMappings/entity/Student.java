@@ -37,11 +37,14 @@ public class Student {
                joinColumns = @JoinColumn(name = "student_id"),
                inverseJoinColumns = @JoinColumn(name = "course_id"))
     private List<Course> courses;
-    
 
     public Student(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+    }
+
+    public void addCourse(Course course) {
+        courses.add(course);
     }
 }
