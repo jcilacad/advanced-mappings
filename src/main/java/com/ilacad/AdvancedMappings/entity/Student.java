@@ -1,10 +1,17 @@
 package com.ilacad.AdvancedMappings.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "student")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Student {
 
     @Id
@@ -21,4 +28,9 @@ public class Student {
     @Column(name = "email")
     private String email;
 
+    public Student(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
 }
