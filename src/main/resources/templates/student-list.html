@@ -101,11 +101,14 @@
                         <!--Table head-->
                         <!--Table body-->
                         <tbody>
-                        <tr>
-                            <th scope="row"></th>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
+                        <tr th:each="course : ${courses}">
+                            <th th:text="${course.id}" scope="row"></th>
+                            <td th:text="${course.title}"></td>
+
+                             <td th:if="${course.instructor}">[[${course.instructor.firstName}]] [[${course.instructor.lastName}]]</td>
+                             <td th:unless="${course.instructor}">(FREE COURSE)</td>
+                                 <td th:if="${course.instructor}">[[${course.instructor.instructorDetail.youtubeChannel}]]</td>
+                                 <td th:unless="${course.instructor}">[N/A]</td>
                             <!-- Button trigger modal -->
                             <td>
                                 <a class="btn btn-primary">

@@ -24,7 +24,7 @@ public class Course {
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.REFRESH, CascadeType.DETACH},
-            fetch = FetchType.LAZY)
+            fetch = FetchType.EAGER)
     @JoinColumn(name = "instructor_id", referencedColumnName = "id")
     private Instructor instructor;
 
