@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/student")
 public class StudentController {
 
+    private
+
     @GetMapping("/list")
     public String list() {
         return "student-list";
