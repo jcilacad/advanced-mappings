@@ -41,6 +41,10 @@ public class Course {
                inverseJoinColumns = @JoinColumn(name = "student_id"))
     private List<Student> students;
 
+    public Course(String title) {
+        this.title = title;
+    }
+
     public void addReview (Review review) {
         review.setCourse(this);
         reviews.add(review);
@@ -48,9 +52,5 @@ public class Course {
 
     public void addStudent (Student student) {
         students.add(student);
-    }
-
-    public Course(String title) {
-        this.title = title;
     }
 }
