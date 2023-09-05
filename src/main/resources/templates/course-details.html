@@ -6,6 +6,235 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
+
+    <style>
+        body {
+            background-color: #f9f9fa
+        }
+
+        .padding {
+            padding: 3rem !important
+        }
+
+        .user-card-full {
+            overflow: hidden;
+        }
+
+        .card {
+            border-radius: 5px;
+            -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+            box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+            border: none;
+            margin-bottom: 30px;
+        }
+
+        .m-r-0 {
+            margin-right: 0px;
+        }
+
+        .m-l-0 {
+            margin-left: 0px;
+        }
+
+        .user-card-full .user-profile {
+            border-radius: 5px 0 0 5px;
+        }
+
+        .bg-c-lite-green {
+            background: -webkit-gradient(linear, left top, right top, from(#f29263), to(#ee5a6f));
+            background: linear-gradient(to right, #ee5a6f, #f29263);
+        }
+
+        .user-profile {
+            padding: 20px 0;
+        }
+
+        .card-block {
+            padding: 1.25rem;
+        }
+
+        .m-b-25 {
+            margin-bottom: 25px;
+        }
+
+        .img-radius {
+            border-radius: 5px;
+        }
+
+
+        h6 {
+            font-size: 14px;
+        }
+
+        .card .card-block p {
+            line-height: 25px;
+        }
+
+        @media only screen and (min-width: 1400px) {
+            p {
+                font-size: 14px;
+            }
+        }
+
+        .card-block {
+            padding: 1.25rem;
+        }
+
+        .b-b-default {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .m-b-20 {
+            margin-bottom: 20px;
+        }
+
+        .p-b-5 {
+            padding-bottom: 5px !important;
+        }
+
+        .card .card-block p {
+            line-height: 25px;
+        }
+
+        .m-b-10 {
+            margin-bottom: 10px;
+        }
+
+        .text-muted {
+            color: #919aa3 !important;
+        }
+
+        .b-b-default {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .f-w-600 {
+            font-weight: 600;
+        }
+
+        .m-b-20 {
+            margin-bottom: 20px;
+        }
+
+        .m-t-40 {
+            margin-top: 20px;
+        }
+
+        .p-b-5 {
+            padding-bottom: 5px !important;
+        }
+
+        .m-b-10 {
+            margin-bottom: 10px;
+        }
+
+        .m-t-40 {
+            margin-top: 20px;
+        }
+
+        .user-card-full .social-link li {
+            display: inline-block;
+        }
+
+        .user-card-full .social-link li a {
+            font-size: 20px;
+            margin: 0 10px 0 0;
+            -webkit-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+        }
+
+        input {
+            padding: 10px;
+            width: 100%;
+            font-size: 17px;
+            font-family: Raleway;
+            border: 1px solid #aaaaaa;
+            border-radius: 10px;
+            -webkit-appearance: none;
+        }
+
+        body {
+            background-color: #fff;
+        }
+
+        .container {
+            background-color: #eef2f5;
+            width: 400px;
+        }
+
+        .addtxt {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            text-align: center;
+            font-size: 13px;
+            width: 350px;
+            background-color: #e5e8ed;
+            font-weight: 500;
+        }
+
+        .form-control: focus {
+            color: #000;
+        }
+
+        .second {
+            width: 350px;
+            background-color: white;
+            border-radius: 4px;
+            box-shadow: 10px 10px 5px #aaaaaa;
+        }
+
+        .text1 {
+            font-size: 13px;
+            font-weight: 500;
+            color: #56575b;
+        }
+
+        .text2 {
+            font-size: 13px;
+            font-weight: 500;
+            margin-left: 6px;
+            color: #56575b;
+        }
+
+        .text3 {
+            font-size: 13px;
+            font-weight: 500;
+            margin-right: 4px;
+            color: #828386;
+        }
+
+        .text3o {
+            color: #00a5f4;
+
+        }
+
+        .text4 {
+            font-size: 13px;
+            font-weight: 500;
+            color: #828386;
+        }
+
+        .text4i {
+            color: #00a5f4;
+        }
+
+        .text4o {
+            color: white;
+        }
+
+        .thumbup {
+            font-size: 13px;
+            font-weight: 500;
+            margin-right: 5px;
+        }
+
+        .thumbupo {
+            color: #17a2b8;
+        }
+
+
+    </style>
+
     <style>
         body {
             background-color: #f9f9fa
@@ -244,13 +473,17 @@
                                     The field must not be empty
                                 </div>
 
+                                <div th:if="${param.deleteSuccess}" class="alert alert-success" role="alert">
+                                    Successfully Deleted a Review
+                                </div>
+
                                 <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Course Details</h6>
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12">
                                         <p class="m-b-10 f-w-600">Title</p>
                                         <h6 th:text="${course.title}" class="text-muted f-w-400"></h6>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12">
                                         <p class="m-b-10 f-w-600">Description</p>
                                         <h6 th:text="${course.description}" class="text-muted f-w-400"></h6>
                                     </div>
@@ -308,10 +541,79 @@
                                             </div>
                                     </span></h6>
 
+<!--/*
+                                     <div th:each="review : ${course.reviews}" class="col-sm-12">
+                                         <p class="m-b-10 f-w-450">Student Name: [[${review.comment}]]</p>
+                                         <h6 class="text-muted f-w-400"></h6>
+                                     </div>
+  */-->
+                                    <div class="d-flex justify-content-center py-2" th:each="review : ${course.reviews}">
 
-                                    <div th:each="review : ${course.reviews}" class="col-sm-12">
-                                        <p class="m-b-10 f-w-450">Student Name: [[${review.comment}]]</p>
-                                        <h6 class="text-muted f-w-400"></h6>
+
+                                        <div class="second py-2 px-2"><span class="text1">[[${review.comment}]]</span>
+                                            <div class="d-flex justify-content-between py-1 pt-2">
+                                                <div>
+                                                    <button class="btn btn-success btn-sm rounded-0"
+                                                            data-bs-toggle="modal"
+                                                            th:data-bs-target="'#updateReview-' + ${review.getId()}"
+                                                            data-bs-whatever="@getbootstrap"
+                                                            data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                            class="fa fa-edit"></i>
+                                                    </button>
+
+                                                    <div class="modal fade" th:id="'updateReview-' + ${review.getId()}"
+                                                         tabindex="-1"
+                                                         aria-labelledby="updateModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-fullscreen-md-down">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h1 class="modal-title fs-5" id="deleteModalLabel"
+                                                                        style="color: black">
+                                                                        Update Review</h1>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                </div>
+                                                                <form th:action="@{'/update-review?reviewId=' + ${review.getId()}}"
+                                                                      th:object="${reviewDto}"
+                                                                      method="POST">
+                                                                    <div class="modal-body">
+
+                                                                        <div class="tab mt-5">
+                                                                            <p>
+                                                                                <input placeholder="Type comment"
+                                                                                       th:value="${review.getComment()}"
+                                                                                       name="comment"
+                                                                                       id="comment">
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                                data-bs-dismiss="modal">
+                                                                            Close
+                                                                        </button>
+                                                                        <button type="submit" class="btn btn-primary">Update
+                                                                        </button>
+                                                                    </div>
+
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    </li>
+                                                    <li class="list-inline-item">
+
+
+                                                        <form method="POST"
+                                                              th:action="@{'/student/delete-review?reviewId=' + ${review.getId()}}">
+                                                            <button class="btn btn-danger btn-sm rounded-0" type="submit"
+                                                                    data-toggle="tooltip" data-placement="top" title="Delete"><i
+                                                                    class="fa fa-trash"></i></button>
+                                                        </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
 

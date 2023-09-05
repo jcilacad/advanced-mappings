@@ -90,6 +90,15 @@ public class StudentController {
 
     }
 
+    @PostMapping("/delete-review")
+    public String deleteReview(@RequestParam("reviewId") Long reviewId) {
+
+        Course course = instructorService.deleteReview(reviewId);
+
+        return "redirect:/student/course-details/" + course.getId() + "?deleteSuccess";
+
+    }
+
 
 
 }
