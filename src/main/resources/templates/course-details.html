@@ -193,7 +193,8 @@
                                 <p>Instructor</p>
                                 <!-- Button trigger modal -->
 
-                                <h6 th:if="${course.instructor}" class="f-w-600">[[${course.instructor.instructorDetail.youtubeChannel}]] [[${course.instructor.lastName}]]</h6>
+                                <div class="my-4"></div>
+                                <h6 th:if="${course.instructor}" class="f-w-600">[[${course.instructor.instructorDetail.youtubeChannel}]]</h6>
                                 <h6 th:unless="${course.instructor}" class="f-w-600">[N/A]</h6>
                                 <p>Youtube Channel</p>
 
