@@ -159,7 +159,7 @@ public class InstructorServiceImpl implements InstructorService {
         Instructor instructor = findInstructorById(id);
 
         // Create an instance of course
-        Course course = new Course(courseDto.getCourseName());
+        Course course = new Course(courseDto.getCourseName(), courseDto.getDescription());
 
         instructor.addCourse(course);
 

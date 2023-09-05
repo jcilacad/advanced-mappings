@@ -14,6 +14,9 @@ import lombok.Setter;
 public class CourseDto {
 
     @NotEmpty
-    @Size(max = 50, message = "The maximum field must be 50")
+    @Size(max = 50, message = "The maximum value must be at least 50 characters")
     private String courseName;
+
+    @Size(max = 50, message = "The maximum value must be at least 50 characters")
+    private String description;
 }
