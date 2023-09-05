@@ -22,6 +22,9 @@ public class Course {
     @Column(name = "title")
     private String title;
 
+    @Column(name = "description")
+    private String description;
+
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.REFRESH, CascadeType.DETACH},
             fetch = FetchType.EAGER)
@@ -41,8 +44,9 @@ public class Course {
                inverseJoinColumns = @JoinColumn(name = "student_id"))
     private List<Student> students;
 
-    public Course(String title) {
+    public Course(String title, String description) {
         this.title = title;
+        this.description = description;
     }
 
     public void addReview (Review review) {
