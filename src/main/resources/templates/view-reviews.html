@@ -261,26 +261,12 @@
     <div class="d-flex justify-content-center pt-3 pb-2">Reviews for [[${course.title}]]</div>
 
 
-    <div class="d-flex justify-content-center pt-3 pb-2">
-        <div>
-            <div th:if="${param.updateSuccess}" class="alert alert-success" role="alert">
-                Successfully Updated a Review
-            </div>
-        </div>
-
-        <div>
-            <div th:if="${param.deleteSuccess}" class="alert alert-success" role="alert">
-                Successfully Deleted a Review
-            </div>
-        </div>
-    </div>
-
     <div class="d-flex justify-content-center py-2" th:each="review : ${reviews}">
 
 
         <div class="second py-2 px-2"><span class="text1">[[${review.comment}]]</span>
             <div class="d-flex justify-content-between py-1 pt-2">
-               
+
             </div>
         </div>
     </div>

@@ -100,5 +100,20 @@ public class StudentController {
     }
 
 
+    @PostMapping("/update-review")
+    public String updateReview (@RequestParam("reviewId") Long reviewId,
+                                @ModelAttribute("updateReview") ReviewDto reviewDto) {
+
+        // update review
+        Course course = instructorService.updateReview(reviewDto, reviewId);
+
+        // Get course id for return
+        Long courseId = course.getId();
+        return "redirect:/student/course-details/" + courseId + "?updateSuccess";
+
+    }
+
+
+
 
 }

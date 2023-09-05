@@ -197,17 +197,5 @@ public class InstructorController {
         return "view-reviews";
     }
 
-    @PostMapping("/update-review")
-    public String updateReview (@RequestParam("reviewId") Long reviewId,
-                                @ModelAttribute("updateReview") ReviewDto reviewDto) {
-
-        // update review
-        Course course = instructorService.updateReview(reviewDto, reviewId);
-
-        // Get course id for return
-        Long courseId = course.getId();
-        return "redirect:/view-reviews/course-id/" + courseId + "?updateSuccess";
-
-    }
 
 }

@@ -464,6 +464,9 @@
 
 
   */-->
+                                <div th:if="${param.updateSuccess}" class="alert alert-success" role="alert">
+                                    Successfully Updated a Review
+                                </div>
 
                                 <div th:if="${param.addReview}" class="alert alert-success" role="alert">
                                     Successfully Added a Review
@@ -573,7 +576,7 @@
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                             aria-label="Close"></button>
                                                                 </div>
-                                                                <form th:action="@{'/update-review?reviewId=' + ${review.getId()}}"
+                                                                <form th:action="@{'/student/update-review?reviewId=' + ${review.getId()}}"
                                                                       th:object="${reviewDto}"
                                                                       method="POST">
                                                                     <div class="modal-body">
