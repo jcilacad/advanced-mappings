@@ -15,9 +15,4 @@ public interface InstructorRepository extends JpaRepository<Instructor, Long> {
 
     Optional<Instructor> findByEmail(String email);
 
-    @Query("SELECT i FROM Instructor i " +
-            "JOIN FETCH i.courses " +
-            "JOIN FETCH i.instructorDetail " +
-            "WHERE i.id = :id")
-    Instructor findInstructorByIdJoinFetch(@Param("id") Long id);
 }

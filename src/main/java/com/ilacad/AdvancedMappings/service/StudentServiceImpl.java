@@ -1,5 +1,6 @@
 package com.ilacad.AdvancedMappings.service;
 
+import com.ilacad.AdvancedMappings.dto.CourseDto;
 import com.ilacad.AdvancedMappings.entity.Course;
 import com.ilacad.AdvancedMappings.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,15 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<Course> findAllCourses() {
         return courseRepository.findAll();
+    }
+
+    @Override
+    public List<Course> findCourse(CourseDto courseDto) {
+
+        String courseName = courseDto.getCourseName();
+
+        List<Course> courses = courseRepository.findByTitleContainsIgnoreCase(courseName);
+
+        return courses;
     }
 }

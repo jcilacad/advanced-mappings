@@ -50,14 +50,14 @@
         <div class="card mb-4">
             <div class="card-body">
                 <!-- Grid row -->
-                <form method="POST">
+                <form th:action="@{/student/search-course}" th:object="${courseDto}" method="POST">
                     <div class="row">
                         <!-- Grid column -->
                         <div class="col-md-12">
-<!--                            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger"-->
-<!--                                 role="alert">-->
-<!--                                &lt;!&ndash;                                Produce an error message based on validation&ndash;&gt;-->
-<!--                            </div>-->
+                            <div th:if="${#fields.hasErrors('courseName')}" th:errors="*{courseName}" class="alert alert-danger"
+                                 role="alert">
+                                <!--                                Produce an error message based on validation-->
+                            </div>
 
 <!--                            <div th:if="${param.undefined}" class="alert alert-danger"-->
 <!--                                 role="alert">-->
@@ -72,9 +72,11 @@
                                 Courses</h2>
                             <div class="input-group mb-3">
 
-                                <input type="text" class="form-control"
-                                       placeholder="Instructor's Email Address"
-                                       aria-label="Recipient's username" aria-describedby="button-addon2">
+                                <input th:field="*{courseName}"
+                                       type="text" class="form-control"
+                                       placeholder="Type a course name"
+                                       aria-label="Recipient's username" aria-describedby="button-addon2"
+                                >
                                 <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search
                                 </button>
 
