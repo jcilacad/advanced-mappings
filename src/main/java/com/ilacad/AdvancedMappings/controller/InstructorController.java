@@ -180,21 +180,7 @@ public class InstructorController {
 
     }
 
-    @PostMapping("/add-review")
-    public String addReview (@Valid @ModelAttribute("reviewDto") ReviewDto reviewDto,
-                             @RequestParam(name = "instructorId") Long instructorId,
-                             @RequestParam(name = "courseId") Long courseId,
-                             BindingResult result) {
 
-        if (result.hasErrors()) {
-            return "redirect:/instructor/details?id=" + instructorId + "&emptyField";
-        }
-
-        instructorService.addReview(instructorId, courseId, reviewDto);
-
-        return "redirect:/instructor/details?id=" + instructorId + "&addReview";
-
-    }
 
     @GetMapping("/view-reviews/course-id/{courseId}")
     public String viewReviews(@PathVariable(name = "courseId") Long courseId,

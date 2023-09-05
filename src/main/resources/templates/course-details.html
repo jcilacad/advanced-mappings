@@ -232,7 +232,18 @@
                                  <div th:if="${param.deleteOtherDetails}" class="alert alert-success" role="alert">
                                      Successfully deleted other details
                                  </div>
+
+
   */-->
+
+                                <div th:if="${param.addReview}" class="alert alert-success" role="alert">
+                                    Successfully Added a Review
+                                </div>
+
+                                <div th:if="${param.emptyField}" class="alert alert-danger" role="alert">
+                                    The field must not be empty
+                                </div>
+
                                 <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Course Details</h6>
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -244,7 +255,58 @@
                                         <h6 th:text="${course.description}" class="text-muted f-w-400"></h6>
                                     </div>
 
-                                    <h6 class="m-b-20 p-b-5 b-b-default f-w-600 mt-5">Reviews</h6>
+                                    <h6 class="m-b-20 p-b-5 b-b-default f-w-600 mt-5">Reviews
+
+                                        <span>
+
+                                            <button class="btn btn-warning btn-sm rounded-0"
+                                                    data-bs-toggle="modal"
+                                                    th:data-bs-target="'#addReview-' + ${course.getId()}"
+                                                    data-bs-whatever="@getbootstrap"
+                                                    data-toggle="tooltip" data-placement="top" title="Add Review">ADD REVIEW  <i
+                                                    class="fa fa-book"></i>
+                                            </button>
+
+                                            <div class="modal fade" th:id="'addReview-' + ${course.getId()}"
+                                                 tabindex="-1"
+                                                 aria-labelledby="updateModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-fullscreen-md-down">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="reviewCourse"
+                                                                style="color: black">
+                                                                Add a review for [[${course.title}]]</h1>
+                                                            <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                        </div>
+                                                        <form th:action="@{'/student/add-review?instructorId=' + ${course.instructor.getId()} +
+                                                                       '&courseId=' + ${course.getId()}}"
+                                                              th:object="${reviewDto}"
+                                                              method="POST">
+                                                            <div class="modal-body">
+
+                                                                <div class="tab mt-5">
+                                                                    <p>
+                                                                        <input placeholder="Type your comment"
+                                                                               th:field="*{comment}">
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">
+                                                                    Close
+                                                                </button>
+                                                                <button type="submit" class="btn btn-primary">Add
+                                                                </button>
+                                                            </div>
+
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </span></h6>
 
 
                                     <div th:each="review : ${course.reviews}" class="col-sm-12">

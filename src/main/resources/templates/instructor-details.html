@@ -503,53 +503,6 @@
                                             <!--                                            Add Review-->
 
 
-                                            <button class="btn btn-warning btn-sm rounded-0"
-                                                    data-bs-toggle="modal"
-                                                    th:data-bs-target="'#addReview-' + ${courseName.getId()}"
-                                                    data-bs-whatever="@getbootstrap"
-                                                    data-toggle="tooltip" data-placement="top" title="Add Review"><i
-                                                    class="fa fa-book"></i>
-                                            </button>
-
-                                            <div class="modal fade" th:id="'addReview-' + ${courseName.getId()}"
-                                                 tabindex="-1"
-                                                 aria-labelledby="updateModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-fullscreen-md-down">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="reviewCourse"
-                                                                style="color: black">
-                                                                Add a review for [[${courseName.title}]]</h1>
-                                                            <button type="button" class="btn-close"
-                                                                    data-bs-dismiss="modal"
-                                                                    aria-label="Close"></button>
-                                                        </div>
-                                                        <form th:action="@{'/instructor/add-review?instructorId=' + ${instructor.getId()} +
-                                                                       '&courseId=' + ${courseName.getId()}}"
-                                                              th:object="${reviewDto}"
-                                                              method="POST">
-                                                            <div class="modal-body">
-
-                                                                <div class="tab mt-5">
-                                                                    <p>
-                                                                        <input placeholder="Type your comment"
-                                                                               th:field="*{comment}">
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">
-                                                                    Close
-                                                                </button>
-                                                                <button type="submit" class="btn btn-primary">Add
-                                                                </button>
-                                                            </div>
-
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
 
                                         </li>
                                         <!--                                        end of add review-->

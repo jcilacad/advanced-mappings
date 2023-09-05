@@ -1,6 +1,7 @@
 package com.ilacad.AdvancedMappings.controller;
 
 import com.ilacad.AdvancedMappings.dto.CourseDto;
+import com.ilacad.AdvancedMappings.dto.ReviewDto;
 import com.ilacad.AdvancedMappings.entity.Course;
 import com.ilacad.AdvancedMappings.entity.Instructor;
 import com.ilacad.AdvancedMappings.service.InstructorService;
@@ -68,8 +69,25 @@ public class StudentController {
         Course course = studentService.findCourseByCourseId(courseId);
 
         model.addAttribute("course", course);
+        model.addAttribute("reviewDto", new ReviewDto());
 
         return "course-details";
+    }
+
+    @PostMapping("/add-review")
+    public String addReview (@Valid @ModelAttribute("reviewDto") ReviewDto reviewDto,
+                             @RequestParam(name = "instructorId") Long instructorId,
+                             @RequestParam(name = "courseId") Long courseId,
+                             BindingResult result) {
+
+        if (result.hasErrors()) {
+            return "redirect:/student/course-details/" + courseId + "?emptyField";
+        }
+
+        instructorService.addReview(instructorId, courseId, reviewDto);
+
+        return "redirect:/student/course-details/" + courseId + "?addReview";
+
     }
 
 
