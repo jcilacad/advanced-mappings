@@ -59,6 +59,11 @@
                                 <!--                                Produce an error message based on validation-->
                             </div>
 
+                            <div th:if="${param.unknownTitle}" class="alert alert-danger"
+                                 role="alert">
+                                Course name not found
+                            </div>
+
 <!--                            <div th:if="${param.undefined}" class="alert alert-danger"-->
 <!--                                 role="alert">-->
 <!--                                Email does not exists-->

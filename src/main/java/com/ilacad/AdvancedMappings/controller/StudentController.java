@@ -56,6 +56,9 @@ public class StudentController {
         }
 
 
+        if (courses.isEmpty()) {
+            return "redirect:/student/list?unknownTitle";
+        }
         model.addAttribute("courses", courses);
 
         return "student-list";
