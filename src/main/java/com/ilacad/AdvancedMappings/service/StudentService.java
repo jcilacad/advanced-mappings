@@ -10,4 +10,6 @@ public interface StudentService {
     List<Course> findAllCourses();
 
     List<Course> findCourse(CourseDto courseDto);
+
+    Course findCourseByCourseId(Long courseId);
 }
