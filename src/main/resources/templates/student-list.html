@@ -118,7 +118,8 @@
                                  <td th:unless="${course.instructor}">[N/A]</td>
                             <!-- Button trigger modal -->
                             <td>
-                                <a class="btn btn-primary">
+                                <a th:href="@{/students/course-details}"
+                                   class="btn btn-primary">
                                     View Details
                                 </a>
                             </td>
