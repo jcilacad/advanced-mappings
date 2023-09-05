@@ -65,6 +65,14 @@ public class StudentController {
 
     }
 
+    @GetMapping("/course-details")
+    public String courseDetails() {
+
+
+
+        return "course-details";
+    }
+
 
 
 }

@@ -312,8 +312,12 @@
                                                     <form>
                                                         <div class="mb-3">
                                                             <input th:field="*{courseName}" type="text"
-                                                                   class="form-control"
+                                                                   class="form-control mb-2"
                                                                    placeholder="Course Title">
+
+                                                            <input th:field="*{description}" type="text"
+                                                                   class="form-control"
+                                                                   placeholder="Course Description">
                                                         </div>
 
                                                     </form>
@@ -457,7 +461,13 @@
                                                                     <input placeholder="Course Name"
                                                                            th:value="${courseName.title}"
                                                                            name="courseName"
-                                                                           id="courseName">
+                                                                           id="courseName"
+                                                                           class="mb-2">
+
+                                                                    <input placeholder="Course Description"
+                                                                           th:value="${courseName.description}"
+                                                                           name="description"
+                                                                           id="description">
                                                                 </p>
                                                             </div>
                                                         </div>
