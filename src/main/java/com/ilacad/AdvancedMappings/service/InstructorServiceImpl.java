@@ -208,8 +208,10 @@ public class InstructorServiceImpl implements InstructorService {
         Course course = findCourseById(courseId);
 
         String newTitle = courseDto.getCourseName();
+        String newDescription = courseDto.getDescription();
 
         course.setTitle(newTitle);
+        course.setDescription(newDescription);
 
         courseRepository.save(course);
     }
