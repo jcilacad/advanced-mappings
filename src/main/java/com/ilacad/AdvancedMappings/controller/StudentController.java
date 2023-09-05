@@ -63,10 +63,11 @@ public class StudentController {
     }
 
     @GetMapping("/course-details/{courseId}")
-    public String courseDetails(@PathVariable(name = "courseId") Long courseId) {
+    public String courseDetails(@PathVariable(name = "courseId") Long courseId, Model model) {
 
         Course course = studentService.findCourseByCourseId(courseId);
 
+        model.addAttribute("course", course);
 
         return "course-details";
     }

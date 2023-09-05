@@ -188,10 +188,14 @@
                                     <img src="https://img.icons8.com/?size=100&id=15263&format=png" class="img-radius"
                                          alt="User-Profile-Image">
                                 </div>
-                                <h6 class="f-w-600">John Ilacad</h6>
+                                <h6 th:if="${course.instructor}" class="f-w-600">[[${course.instructor.firstName}]] [[${course.instructor.lastName}]]</h6>
+                                <h6 th:unless="${course.instructor}" class="f-w-600">(Free Course)</h6>
                                 <p>Instructor</p>
                                 <!-- Button trigger modal -->
 
+                                <h6 th:if="${course.instructor}" class="f-w-600">[[${course.instructor.instructorDetail.youtubeChannel}]] [[${course.instructor.lastName}]]</h6>
+                                <h6 th:unless="${course.instructor}" class="f-w-600">[N/A]</h6>
+                                <p>Youtube Channel</p>
 
                             </div>
                         </div>
