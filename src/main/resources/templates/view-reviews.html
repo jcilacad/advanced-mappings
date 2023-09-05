@@ -280,66 +280,7 @@
 
         <div class="second py-2 px-2"><span class="text1">[[${review.comment}]]</span>
             <div class="d-flex justify-content-between py-1 pt-2">
-                <div>
-                    <button class="btn btn-success btn-sm rounded-0"
-                            data-bs-toggle="modal"
-                            th:data-bs-target="'#updateReview-' + ${review.getId()}"
-                            data-bs-whatever="@getbootstrap"
-                            data-toggle="tooltip" data-placement="top" title="Edit"><i
-                            class="fa fa-edit"></i>
-                    </button>
-
-                    <div class="modal fade" th:id="'updateReview-' + ${review.getId()}"
-                         tabindex="-1"
-                         aria-labelledby="updateModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-fullscreen-md-down">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="deleteModalLabel"
-                                        style="color: black">
-                                        Update Review</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                </div>
-                                <form th:action="@{'/update-review?reviewId=' + ${review.getId()}}"
-                                      th:object="${reviewDto}"
-                                      method="POST">
-                                    <div class="modal-body">
-
-                                        <div class="tab mt-5">
-                                            <p>
-                                                <input placeholder="Type comment"
-                                                       th:value="${review.getComment()}"
-                                                       name="comment"
-                                                       id="comment">
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">
-                                            Close
-                                        </button>
-                                        <button type="submit" class="btn btn-primary">Update
-                                        </button>
-                                    </div>
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    </li>
-                    <li class="list-inline-item">
-
-
-                        <form method="POST"
-                              th:action="@{'/delete-review?reviewId=' + ${review.getId()}}">
-                            <button class="btn btn-danger btn-sm rounded-0" type="submit"
-                                    data-toggle="tooltip" data-placement="top" title="Delete"><i
-                                    class="fa fa-trash"></i></button>
-                        </form>
-                </div>
+               
             </div>
         </div>
     </div>
